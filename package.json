@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/sergioruizdavila/frontEnd-Structure-Course#readme",
   "devDependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-sass": "^2.3.2"
   }
 }
