@@ -1,1 +1,1 @@
-.button{background-color:red}.test{color:red}
+.btn{background-color:#00B592;text-decoration:none;margin:3px}.btn--small{padding:8px;font-size:15px}.btn--default{padding:10px;font-size:17px}.btn--large__text{text-transform:uppercase}.btn__text{color:white}.test{color:red}

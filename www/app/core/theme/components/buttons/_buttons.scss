@@ -2,6 +2,41 @@
 /*                     BUTTONS STYLES                     */
 /**********************************************************/
 
-.button {
-    background-color: red;
+.btn {
+    background-color: #00B592;
+    text-decoration: none;
+    margin: 3px;
+
+    /* MODIFIERS */
+    &--small {
+        padding: 8px;
+        font-size: 15px;
+    }
+
+    &--default {
+        padding: 10px;
+        font-size: 17px;
+    }
+
+    &--large {
+
+        &__text {
+            text-transform: uppercase;
+        }
+
+    }
+
+    &--primary {
+
+    }
+
+    &--secondary {
+
+    }
+
+    /* ELEMENTS */
+    &__text {
+        color: white;
+    }
+
 }
