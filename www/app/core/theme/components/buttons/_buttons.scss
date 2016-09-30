@@ -8,7 +8,18 @@
   cursor: crosshair;
   display: inline-block;
 
-    /* MODIFIERS */
+    /** MODIFIERS **/
+
+    /* BUTTON TYPES */
+    &--default {
+      font-size: 16px;
+      padding: 12px;
+    }
+
+    &--large {
+      font-size: 18px;
+      padding: 12px 60px;
+    }
     &--border-primary {
       border-bottom: 3px #047c65 solid;
       border-radius: 5px;
@@ -21,12 +32,14 @@
       border-left: 1px #047c65 solid;
       border-radius: 5px;
     }
+    /* BUTTON COLORS */
     &--primary-color {
       background-color: #00B592;
     }
     &--secondary-color {
       background-color: transparent;
     }
+    /* BUTTON SIZES */
     &--small {
       font-size: 15px;
       padding: 8px;
@@ -34,32 +47,12 @@
         text-transform: lowercase!important;
       }
     }
-
-    &--default {
-      font-size: 16px;
-      padding: 12px;
-    }
-
-    &--large {
-      font-size: 18px;
-      padding: 12px 60px;
-
-    }
-
-    &--primary {
-
-    }
-
-    &--secondary {
-
-    }
-
     /* ELEMENTS */
-    &__text-w {
+    &__text-white {
       color: white;
       text-transform: uppercase;
     }
-    &__text-g {
+    &__text-green {
       color: #00B592;
       text-transform: uppercase;
     }
