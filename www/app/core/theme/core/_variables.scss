@@ -1,20 +1,35 @@
-/**********************************************************/
-/*                  VARIABLES FOR OUR APP                 */
-/**********************************************************/
+/***************************/
+/*  VARIABLES FOR OUR APP  */
+/***************************/
 //
-//  Table of Contents:
-//
-//   1. Global
-
-//**********************************************************
+// Table of Contents:
+// 1. Global
+// 2. Box
+// 3. Buttons
+// 4. Header
+// 5. Header - blocks (Tabs)
+// 6. Header - Search Bar
+// 7. Images
+// 8. Labels
+// 9. Left Nav (small devices)
+// 10. Links
+// 11. Logo
+// 12. Paragraph
 
 // 1. Global
 // ---------
 $main-palette: (
   primary: #00B592,
-  secondary: #018a6f,
+  seconday: #018a6f,
   success: #3adb76,
   warning: #e8ce47,
   alert: #ec5840,
-  gray: #8e8e8e,
+  gray: #8e8e8e
 );
+
+// $main-palette-primary: #00b592;
+
+//.button {
+//  background-color: map-get($main-palette, primary);
+//  background-color: #00B592;
+//}

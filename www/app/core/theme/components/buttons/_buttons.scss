@@ -1,7 +1,67 @@
-/**********************************************************/
-/*                     BUTTONS STYLES                     */
-/**********************************************************/
+/***************************/
+/*      BUTTON STYLES      */
+/***************************/
 
 .button {
-    background-color: red;
+  margin: 10px;
+  text-decoration: none!important;
+  cursor: crosshair;
+  display: inline-block;
+
+    /* MODIFIERS */
+    &--border-primary {
+      border-bottom: 3px #047c65 solid;
+      border-radius: 5px;
+    }
+    &--border-secondary {
+      border-color: #00B592;
+      border-bottom: 3px #047c65 solid;
+      border-right: 3px #047c65 solid;
+      border-top: 1px #047c65 solid;
+      border-left: 1px #047c65 solid;
+      border-radius: 5px;
+    }
+    &--primary-color {
+      background-color: #00B592;
+    }
+    &--secondary-color {
+      background-color: transparent;
+    }
+    &--small {
+      font-size: 15px;
+      padding: 8px;
+      &__text {
+        text-transform: lowercase!important;
+      }
+    }
+
+    &--default {
+      font-size: 16px;
+      padding: 12px;
+    }
+
+    &--large {
+      font-size: 18px;
+      padding: 12px 60px;
+
+    }
+
+    &--primary {
+
+    }
+
+    &--secondary {
+
+    }
+
+    /* ELEMENTS */
+    &__text-w {
+      color: white;
+      text-transform: uppercase;
+    }
+    &__text-g {
+      color: #00B592;
+      text-transform: uppercase;
+    }
+
 }

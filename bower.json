@@ -1,13 +1,21 @@
 {
   "name": "parking-example",
-  "homepage": "https://github.com/sergioruizdavila/frontEnd-Structure-Course",
+  "homepage": "https://github.com/cejaramillof/Parking_frontend",
   "authors": [
-    "sergioruizdavila <sergioruizdavila@gmail.com>"
+    "cejaramillof"
   ],
   "description": "test description",
-  "main": "index.js",
+  "main": "index.html",
   "keywords": [
-    "parking"
+    "parking",
+    "system",
+    "parking",
+    "system",
+    "frontend",
+    "html",
+    "css",
+    "js",
+    "angular"
   ],
   "license": "MIT",
   "ignore": [
