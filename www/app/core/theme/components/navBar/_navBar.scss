@@ -4,5 +4,15 @@
 
 
 .ps-navbar {
-    min-height: 83px;    
+    min-height: 83px;
+
+    /*Photo Profile*/
+    &__photo {
+        position: relative;
+        top: 14px;
+
+        img {
+            border-radius: 50%;
+        }
+    }
 }
