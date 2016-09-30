@@ -2,10 +2,19 @@
 /*                     BUTTONS STYLES                     */
 /**********************************************************/
 
-.btn {
+.button {
     background-color: #00B592;
-    text-decoration: none;
+    text-decoration: none!important;
     margin: 3px;
+
+    &:focus {
+
+    }
+
+    /* ELEMENTS */
+    &__text {
+        color: white;
+    }
 
     /* MODIFIERS */
     &--small {
@@ -22,21 +31,33 @@
 
         &__text {
             text-transform: uppercase;
+            color: red;
         }
 
     }
 
-    &--primary {
-
+    &--primary-color {
+        &:hover {
+            color: red;
+        }
     }
 
-    &--secondary {
-
+    &--secondary-color {
+        &:hover {
+            color: white;
+        }
     }
 
-    /* ELEMENTS */
-    &__text {
-        color: white;
+}
+
+.input {
+    border: 1px solid #CCC;
+    padding: 12px;
+    outline: none;
+
+    &:focus {
+        border: 1px solid #00B592;
+        outline: none;
     }
 
 }
