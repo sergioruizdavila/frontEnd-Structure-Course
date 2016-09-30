@@ -6,7 +6,7 @@ var connect = require('gulp-connect');
 var sass = require('gulp-sass');
 
 var paths = {
-    appHtmlInput: ['www/*.html'],
+    appHtmlInput: ['www/*.html', 'www/app/**/*.html'],
     appSassInput: ['www/app/core/theme/app.scss'],
     appAllSass: 'www/**/**/*.scss',
     appCssOutput: 'www/app/core/theme'
@@ -66,7 +66,7 @@ gulp.task('watch', function(){
     /* watch Sass files */
     gulp.watch(paths.appAllSass, ['sass']);
     /* watch Html files */
-    gulp.watch(paths.appHtmlInput, ['html']);
+    gulp.watch([paths.appHtmlInput], ['html']);
 
 });
 

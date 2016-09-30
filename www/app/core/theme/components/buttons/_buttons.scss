@@ -3,5 +3,61 @@
 /**********************************************************/
 
 .button {
-    background-color: red;
+    background-color: #00B592;
+    text-decoration: none!important;
+    margin: 3px;
+
+    &:focus {
+
+    }
+
+    /* ELEMENTS */
+    &__text {
+        color: white;
+    }
+
+    /* MODIFIERS */
+    &--small {
+        padding: 8px;
+        font-size: 15px;
+    }
+
+    &--default {
+        padding: 10px;
+        font-size: 17px;
+    }
+
+    &--large {
+
+        &__text {
+            text-transform: uppercase;
+            color: red;
+        }
+
+    }
+
+    &--primary-color {
+        &:hover {
+            color: red;
+        }
+    }
+
+    &--secondary-color {
+        &:hover {
+            color: white;
+        }
+    }
+
+}
+
+.input {
+    border: 1px solid #CCC;
+    padding: 12px;
+    outline: none;
+
+    &:focus {
+        border: 1px solid #00B592;
+        outline: none;
+    }
+
 }
