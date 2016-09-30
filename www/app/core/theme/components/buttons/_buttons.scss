@@ -5,7 +5,7 @@
 .button {
   margin: 10px;
   text-decoration: none!important;
-  cursor: crosshair;
+  cursor: pointer;
   display: inline-block;
 
     /** MODIFIERS **/
@@ -55,6 +55,11 @@
     &__text-green {
       color: #00B592;
       text-transform: uppercase;
+    }
+
+    &:hover {
+        background-color: #047c65;
+        color: white;
     }
 
 }
