@@ -3,7 +3,6 @@
 /**********************************************************/
 
 .button {
-    background-color: #00B592;
     text-decoration: none!important;
     margin: 3px;
 
@@ -17,6 +16,8 @@
     }
 
     /* MODIFIERS */
+
+    // Size
     &--small {
         padding: 8px;
         font-size: 15px;
@@ -36,15 +37,20 @@
 
     }
 
+    // Color
     &--primary-color {
+        background-color: #00B592;
+
         &:hover {
-            color: red;
+            color: white;
         }
     }
 
     &--secondary-color {
+        background-color: #717171;
+
         &:hover {
-            color: white;
+            color: #292929;
         }
     }
 
