@@ -1,69 +1,60 @@
-/**********************************************************/
-/*                     BUTTONS STYLES                     */
-/**********************************************************/
+/***************************/
+/*      BUTTON STYLES      */
+/***************************/
 
 .button {
-    text-decoration: none!important;
-    margin: 3px;
+  margin: 10px;
+  text-decoration: none!important;
+  cursor: crosshair;
+  display: inline-block;
 
-    &:focus {
+    /** MODIFIERS **/
 
-    }
-
-    /* ELEMENTS */
-    &__text {
-        color: white;
-    }
-
-    /* MODIFIERS */
-
-    // Size
-    &--small {
-        padding: 8px;
-        font-size: 15px;
-    }
-
+    /* BUTTON TYPES */
     &--default {
-        padding: 10px;
-        font-size: 17px;
+      font-size: 16px;
+      padding: 12px;
     }
 
     &--large {
-
-        &__text {
-            text-transform: uppercase;
-            color: red;
-        }
-
+      font-size: 18px;
+      padding: 12px 60px;
     }
-
-    // Color
+    &--border-primary {
+      border-bottom: 3px #047c65 solid;
+      border-radius: 5px;
+    }
+    &--border-secondary {
+      border-color: #00B592;
+      border-bottom: 3px #047c65 solid;
+      border-right: 3px #047c65 solid;
+      border-top: 1px #047c65 solid;
+      border-left: 1px #047c65 solid;
+      border-radius: 5px;
+    }
+    /* BUTTON COLORS */
     &--primary-color {
-        background-color: #00B592;
-
-        &:hover {
-            color: white;
-        }
+      background-color: #00B592;
     }
-
     &--secondary-color {
-        background-color: #717171;
-
-        &:hover {
-            color: #292929;
-        }
+      background-color: transparent;
     }
-
-}
-
-.input {
-    border: 1px solid #CCC;
-    padding: 12px;
-    outline: none;
-
-    &:focus {
-        border: 1px solid #00B592;
-        outline: none;
+    /* BUTTON SIZES */
+    &--small {
+      font-size: 15px;
+      padding: 8px;
+      &__text {
+        text-transform: lowercase!important;
+      }
+    }
+    /* ELEMENTS */
+    &__text-white {
+      color: white;
+      text-transform: uppercase;
+    }
+    &__text-green {
+      color: #00B592;
+      text-transform: uppercase;
     }
 
 }
