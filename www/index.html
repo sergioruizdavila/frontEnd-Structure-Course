@@ -35,67 +35,73 @@
     </header>
 
 
+    <!-------------------->
+    <!--      MAIN      -->
+    <!-------------------->
     <div class="main">
-        <h1>Buttons</h1>
-        <div class="container">
-            <div class="row">
-                <!-- Small Button-->
-                <a href="#" class="button button--border-primary button--primary-color button--small">
-                    <span class="button__text-white button--small__text">Continuar</span>
-                </a>
-                <!-- Default Button-->
-                <a href="#" class="button button--border-primary button--primary-color button--default">
-                    <span class="button__text-white">Continuar</span>
-                </a>
-                <!-- Large Button-->
-                <a href="#" class="button button--border-primary button--primary-color button--large">
-                    <span class="button__text-white">Continuar</span>
-                </a>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <!-- Small Button-->
-                <a href="#" class="button button--border-secondary button--secondary-color button--small">
-                    <span class="button__text-green button--small__text">Continuar</span>
-                </a>
-                <!-- Default Button-->
-                <a href="#" class="button button--border-secondary button--secondary-color button--default">
-                    <span class="button__text-green">Continuar</span>
-                </a>
-                <!-- Large Button-->
-                <a href="#" class="button button--border-secondary button--secondary-color button--large">
-                    <span class="button__text-green">Continuar</span>
-                </a>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <!-- Small Button-->
-                <a href="#" class="button button--primary-color button--small">
-                    <span class="button__text-white button--small__text">Continuar</span>
-                </a>
-                <!-- Default Button-->
-                <a href="#" class="button button--primary-color button--default">
-                    <span class="button__text-white">Continuar</span>
-                </a>
-                <!-- Large Button-->
-                <a href="#" class="button button--primary-color button--large">
-                    <span class="button__text-white">Continuar</span>
-                </a>
-            </div>
-            <div class="row">
-                <!-- Small Input -->
-                <input class="input input--small input--round" type="text" name="name" value="">
+        <div class="row">
 
-                <!-- Default Input-->
-                <input class="input input--default input--round" type="text" name="name" value="">
-
-                <!-- Large Input-->
-                <input class="input input--large input--round" type="text" name="name" value="">
+            <!-- CARS LIST CONTAINER -->
+            <div id="carsList-container" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding-left: 40px;">
+                <div class="box">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Username</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
+            <!-- FORM EDIT CAR CONTAINER -->
+            <div id="formEditCar-container" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding-right: 40px;">
+
+                <div class="box">
+                    <form>
+                        <div class="form-group">
+                            <label for="numberInput">Numero de la placa</label>
+                            <input type="text" class="input input--default input--round" id="numberInput" placeholder="Numero de la placa">
+                        </div>
+                        <div class="form-group">
+                            <label for="ownerInput">Nombre del dueño</label>
+                            <input type="text" class="input input--default input--round" id="ownerInput" placeholder="Nombre completo">
+                        </div>
+                        <button type="button"
+                                class="btn button button--border-secondary button--secondary-color button--default">
+                                Agregar
+                            </button>
+                    </form>
+                </div>
+
+            </div>
+
         </div>
     </div>
+
 </body>
 
 </html>
