@@ -1,6 +1,7 @@
 // Core Styles
 //----------------------------
 @import 'core/variables';
+@import 'core/global';
 
 
 //Components Styles
@@ -8,9 +9,12 @@
 
 //Buttons styles
 @import 'components/buttons/buttons';
+//NavBar styles
 @import 'components/navBar/navBar';
+//Inputs styles
 @import 'components/inputs/inputs';
-
+//Boxes styles
+@import 'components/boxes/boxes';
 
 //Pages Styles
 //----------------------------
