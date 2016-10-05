@@ -9,7 +9,7 @@ var app;
             (function (user) {
                 var User = (function () {
                     function User(data) {
-                        console.log('init user model with this data:', data);
+                        console.log('init user model with these data: ', data);
                         this._id = data.id;
                         this._first_name = data.first_name;
                         this._last_name = data.last_name;
@@ -19,8 +19,15 @@ var app;
                         this._created_at = data.created_at;
                         this._updated_at = data.updated_at;
                         this._is_admin = data.is_admin;
-                        this._autentication_token = data.autentication_token;
+                        this._authentication_token = data.authentication_token;
                     }
+                    Object.defineProperty(User.prototype, "Id", {
+                        get: function () {
+                            return this._id;
+                        },
+                        enumerable: true,
+                        configurable: true
+                    });
                     Object.defineProperty(User.prototype, "First_name", {
                         get: function () {
                             return this._first_name;
@@ -40,7 +47,7 @@ var app;
                         },
                         set: function (value) {
                             if (value === undefined) {
-                                throw 'Please supply user first name value';
+                                throw 'Please supply user last name value';
                             }
                             this._last_name = value;
                         },
@@ -54,10 +61,10 @@ var app;
                         set: function (value) {
                             var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
                             if (value === undefined) {
-                                throw 'Please supply user email values';
+                                throw 'Please supply user email value';
                             }
                             else if (reg.test(value) == false) {
-                                throw 'Please supply a valid user email';
+                                throw 'Please supply a valid user email value';
                             }
                             this._email = value;
                         },
@@ -84,4 +91,20 @@ var app;
         })(models = core.models || (core.models = {}));
     })(core = app.core || (app.core = {}));
 })(app || (app = {}));
+function getuserInfo() {
+    var userData = {
+        "id": 4,
+        "first_name": "Guest",
+        "last_name": "Admin",
+        "password": null,
+        "email": "gastus2@hotmail.com",
+        "birthdate": "2012-12-12",
+        "created_at": "2016-08-23T20:47:47.232Z",
+        "updated_at": "2016-10-04T13:17:12.772Z",
+        "is_admin": true,
+        "authentication_token": "X5Me63hy5-JzP1LXAcrzEMYQkmLgDD1Cww"
+    };
+    var user = new app.core.models.user.User(userData);
+    console.log(user.Email);
+}
 //# sourceMappingURL=user.model.js.map

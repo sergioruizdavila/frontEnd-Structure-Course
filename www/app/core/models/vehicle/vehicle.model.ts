@@ -1,72 +1,75 @@
 /*
-* Specifies the classes and interfaces realted to Vehicle model
+*   Specifies the Classes and Interfaces related to Vehicle in our Model
 */
 
-'use strict'
+'use strict';
 
-module app.core.models.vehicle{
+module app.core.models.vehicle {
 
-  /* CLASS DEFINITION */
-  class Vehicle{
+    /* CLASS DEFINITION */
+    class Vehicle {
 
-    /* PROPERTIES */
-    private _id: number;
-    private _vin: string;
-    private _model: string;
-    private _year: string;
-    private _user: app.core.models.user.User;
+        /* PROPERTIES */
+        private _id: number;
+        private _vin: string;
+        private _model: string;
+        private _year: string;
+        private _user: app.core.models.user.User;
+
+        /* CONSTRUCTOR */
+        constructor() {
+
+        }
+
+        /* ID GETTER */
+        get Id() {
+            return this._id;
+        }
+
+        /* VIN GETTER */
+        get Vin() {
+            return this._vin;
+        }
+
+        /* VIN SETTER */
+        set Vin(value: string) {
+            if(value === undefined) {
+                throw 'Please supply vin vehicle value';
+            }
+            this._vin = value;
+        }
+
+        /* MODEL GETTER */
+        get Model() {
+            return this._model;
+        }
+
+        /* MODEL SETTER */
+        set Model(value: string) {
+            if(value === undefined) {
+                throw 'Please supply model vehicle value';
+            }
+            this._model = value;
+        }
 
 
-    /* CONSTRUCTOR */
-    constructor(){
+        /* YEAR GETTER */
+        get Year() {
+            return this._year;
+        }
 
+        /* YEAR SETTER */
+        set Year(value: string) {
+            if(value === undefined) {
+                throw 'Please supply year vehicle value';
+            }
+            this._year = value;
+        }
+
+        /* USER GETTER */
+        get User() {
+            return this._user;
+        }
     }
 
-    /* VIN GETTER */
-    get Vin(){
-      return this._vin;
-    }
-
-    /* VIN SETTER */
-    set Vin(value:string){
-      /* variables */
-      if(value === undefined){
-        throw 'Please supply vehicle vin value';
-      }
-      this._vin = value;
-    }
-
-    /* MODEL GETTER */
-    get Model(){
-      return this._model;
-    }
-
-    /* MODEL SETTER */
-    set Model(value:string){
-      /* variables */
-      if(value === undefined){
-        throw 'Please supply vehicle model value';
-      }
-      this._model = value;
-    }
-
-    /* YEAR GETTER */
-    get Year(){
-      return this._year;
-    }
-
-    /* YEAR SETTER */
-    set Year(value:string){
-      /* variables */
-      if(value === undefined){
-        throw 'Please supply vehicle year value';
-      }
-      this._year = value;
-    }
-
-    /* USER GETTER */
-    get User(){
-      return this._user;
-    }
-  }
 }

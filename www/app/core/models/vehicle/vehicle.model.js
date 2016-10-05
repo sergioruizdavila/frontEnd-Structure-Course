@@ -10,13 +10,20 @@ var app;
                 var Vehicle = (function () {
                     function Vehicle() {
                     }
+                    Object.defineProperty(Vehicle.prototype, "Id", {
+                        get: function () {
+                            return this._id;
+                        },
+                        enumerable: true,
+                        configurable: true
+                    });
                     Object.defineProperty(Vehicle.prototype, "Vin", {
                         get: function () {
                             return this._vin;
                         },
                         set: function (value) {
                             if (value === undefined) {
-                                throw 'Please supply vehicle vin value';
+                                throw 'Please supply vin vehicle value';
                             }
                             this._vin = value;
                         },
@@ -29,7 +36,7 @@ var app;
                         },
                         set: function (value) {
                             if (value === undefined) {
-                                throw 'Please supply vehicle model value';
+                                throw 'Please supply model vehicle value';
                             }
                             this._model = value;
                         },
@@ -42,7 +49,7 @@ var app;
                         },
                         set: function (value) {
                             if (value === undefined) {
-                                throw 'Please supply vehicle year value';
+                                throw 'Please supply year vehicle value';
                             }
                             this._year = value;
                         },
