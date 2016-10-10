@@ -14,7 +14,7 @@ module app.core.models.vehicle {
         private _vin: string;
         private _model: string;
         private _year: string;
-        private _user: app.core.models.user.User;
+        private _user: app.core.models.user.IUser;
 
         /* CONSTRUCTOR */
         constructor() {

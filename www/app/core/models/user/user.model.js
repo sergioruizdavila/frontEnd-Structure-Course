@@ -91,20 +91,4 @@ var app;
         })(models = core.models || (core.models = {}));
     })(core = app.core || (app.core = {}));
 })(app || (app = {}));
-function getuserInfo() {
-    var userData = {
-        "id": 4,
-        "first_name": "Guest",
-        "last_name": "Admin",
-        "password": null,
-        "email": "gastus2@hotmail.com",
-        "birthdate": "2012-12-12",
-        "created_at": "2016-08-23T20:47:47.232Z",
-        "updated_at": "2016-10-04T13:17:12.772Z",
-        "is_admin": true,
-        "authentication_token": "X5Me63hy5-JzP1LXAcrzEMYQkmLgDD1Cww"
-    };
-    var user = new app.core.models.user.User(userData);
-    console.log(user.Email);
-}
 //# sourceMappingURL=user.model.js.map
