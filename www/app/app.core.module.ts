@@ -3,7 +3,7 @@
 * @description - Here inject dependencies of Angular Modules and 3rd Party
 */
 
-(function() {
+(function(): void {
     'use strict';
 
     angular
