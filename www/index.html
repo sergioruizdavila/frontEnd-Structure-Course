@@ -9,7 +9,7 @@
 
 </head>
 
-<body>
+<body ng-app="psApp">
 
     <!-------------------->
     <!--     HEADER     -->
@@ -39,68 +39,29 @@
     <!--      MAIN      -->
     <!-------------------->
     <div class="main">
-        <div class="row">
 
-            <!-- CARS LIST CONTAINER -->
-            <div id="carsList-container" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding-left: 40px;">
-                <div class="box">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Username</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- FORM EDIT CAR CONTAINER -->
-            <div id="formEditCar-container" class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="padding-right: 40px;">
-
-                <div class="box">
-                    <form>
-                        <div class="form-group">
-                            <label for="numberInput">Numero de la placa</label>
-                            <input type="text" class="input input--default input--round" id="numberInput" placeholder="Numero de la placa">
-                        </div>
-                        <div class="form-group">
-                            <label for="ownerInput">Nombre del dueño</label>
-                            <input type="text" class="input input--default input--round" id="ownerInput" placeholder="Nombre completo">
-                        </div>
-                        <button type="button"
-                                class="btn button button--border-secondary button--secondary-color button--default">
-                                Agregar
-                            </button>
-                    </form>
-                </div>
-
-            </div>
+        <div ui-view class="app-content">
 
         </div>
+
+        <!-- Large Button-->
+        <a href="#" ui-sref="page.editParkingPage" class="button button--border-primary button--primary-color button--large">
+            <span class="button__text-white">Ir a Editar un Parking</span>
+        </a>
     </div>
+
+
+
+<!--bower_components-->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+<!-- Main App javascript files-->
+<script src="app/app.modules.js"></script>
+<script src="app/app.core.modules.js"></script>
+<!-- Pages -->
+<script src="app/pages/editParkingPage/editParkingPage.config.js"></script>
 
 </body>
 
