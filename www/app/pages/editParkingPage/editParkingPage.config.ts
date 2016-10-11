@@ -16,11 +16,17 @@
             console.log('editParkingPage config launched');
 
             // ROUTE
-            $stateProvider.state('page.editParkingPage', {
-                url: '/pages/edit',
-                templateUrl: 'editParkingPage.html'
+            $stateProvider
+            .state('editParkingPage', {
+                url: '/edit',
+                views: {
+                    'container': {
+                        templateUrl: 'app/pages/editParkingPage/editParkingPage.html',
+                        controller: app.pages.editParkingPage.EditParkingPageController.controllerId,
+                        controllerAs: 'vm'
+                    }
+                }
             });
-
 
         }
 

@@ -40,14 +40,18 @@
     <!-------------------->
     <div class="main">
 
-        <div ui-view class="app-content">
+        <div ui-view="container" class="app-content">
 
         </div>
 
         <!-- Large Button-->
-        <a href="#" ui-sref="page.editParkingPage" class="button button--border-primary button--primary-color button--large">
+        <a href="#" ui-sref="editParkingPage" class="button button--border-primary button--primary-color button--large">
             <span class="button__text-white">Ir a Editar un Parking</span>
         </a>
+        <!--<a href="#/edit" class="button button--border-primary button--primary-color button--large">
+            <span class="button__text-white">Ir a Editar un Parking</span>
+        </a>-->
+
     </div>
 
 
@@ -65,6 +69,7 @@
 
 <!-- Pages -->
 <script src="app/pages/editParkingPage/editParkingPage.config.js"></script>
+<script src="app/pages/editParkingPage/editParkingPage.controller.js"></script>
 
 </body>
 
