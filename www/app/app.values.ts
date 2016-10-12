@@ -22,7 +22,7 @@ module app.values {
 
         var dataConfig: IDataConfig = {
             //baseUrl: 'http://parking-system-01.herokuapp.com/v1/',
-            baseUrl: 'https://jsonplaceholder.typicode.com/',
+            baseUrl: 'https://localhost:3000/',
             userVehiclesUrl: 'users/:id/vehicles'
         };
 

@@ -5,7 +5,7 @@ var app;
         (function () {
             'use strict';
             var dataConfig = {
-                baseUrl: 'https://jsonplaceholder.typicode.com/',
+                baseUrl: 'https://localhost:3000/',
                 userVehiclesUrl: 'users/:id/vehicles'
             };
             angular.module('psApp').value('dataConfig', dataConfig);
