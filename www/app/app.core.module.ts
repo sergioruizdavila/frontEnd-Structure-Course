@@ -9,6 +9,7 @@
     angular
         .module('psApp.core', [
             /* Angular Modules */
+            'ngResource',
             'ui.router'
 
             /* 3rd Party */

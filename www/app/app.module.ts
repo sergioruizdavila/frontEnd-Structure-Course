@@ -9,6 +9,7 @@
 
     angular.module('psApp', [
             'psApp.core',
+            'psApp.core.restApi',
             'psApp.pages.editParkingPage'
         ]).config(config);
 

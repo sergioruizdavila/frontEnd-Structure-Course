@@ -2,6 +2,7 @@
     'use strict';
     angular
         .module('psApp.core', [
+        'ngResource',
         'ui.router'
     ]);
 })();

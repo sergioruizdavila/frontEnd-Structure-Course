@@ -12,6 +12,7 @@ module app.pages.editParkingPage {
     /**********************************/
     export interface IEditParkingPageController {
         addVehicle: () => void;
+        getVehicleByUserId: () => void;
     }
 
     /**********************************/
@@ -24,18 +25,22 @@ module app.pages.editParkingPage {
         /**********************************/
         static controllerId = 'psApp.pages.editParkingPage.editParkingPageController';
 
+        /*-- INJECT DEPENDENCIES--*/
+        static $inject = [
+            'psApp.pages.editParkingPage.editParkingPageService'
+        ];
+
 
         /**********************************/
         /*           CONSTRUCTOR          */
         /**********************************/
-        constructor() {
+        constructor(private EditParkingPageService: app.pages.editParkingPage.IEditParkingPageService) {
             this._init();
         }
 
         /* -- INITIALIZE METHOD -- */
         private _init() {
             //Init Variables
-
 
 
             this._activate();
@@ -53,6 +58,14 @@ module app.pages.editParkingPage {
         /**********************************/
         addVehicle(): void {
             console.log('Entro');
+        }
+
+        getVehicleByUserId(): void {
+            this.EditParkingPageService.getVehicleByUserId(1).then(
+                function(response){
+                    console.log('Mis datos obtenidos son:', response);
+                }
+            );
         }
 
     }

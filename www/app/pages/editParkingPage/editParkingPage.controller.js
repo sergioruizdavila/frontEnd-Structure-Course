@@ -6,7 +6,8 @@ var app;
         (function (editParkingPage) {
             'use strict';
             var EditParkingPageController = (function () {
-                function EditParkingPageController() {
+                function EditParkingPageController(EditParkingPageService) {
+                    this.EditParkingPageService = EditParkingPageService;
                     this._init();
                 }
                 EditParkingPageController.prototype._init = function () {
@@ -18,7 +19,15 @@ var app;
                 EditParkingPageController.prototype.addVehicle = function () {
                     console.log('Entro');
                 };
+                EditParkingPageController.prototype.getVehicleByUserId = function () {
+                    this.EditParkingPageService.getVehicleByUserId(1).then(function (response) {
+                        console.log('Mis datos obtenidos son:', response);
+                    });
+                };
                 EditParkingPageController.controllerId = 'psApp.pages.editParkingPage.editParkingPageController';
+                EditParkingPageController.$inject = [
+                    'psApp.pages.editParkingPage.editParkingPageService'
+                ];
                 return EditParkingPageController;
             }());
             editParkingPage.EditParkingPageController = EditParkingPageController;
