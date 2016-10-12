@@ -13,7 +13,6 @@ module app.values {
      /**********************************/
      export interface IDataConfig {
          baseUrl: string;
-         userVehiclesUrl: string;
      }
 
     (function(): void {
@@ -22,8 +21,7 @@ module app.values {
 
         var dataConfig: IDataConfig = {
             //baseUrl: 'http://parking-system-01.herokuapp.com/v1/',
-            baseUrl: 'https://localhost:3000/',
-            userVehiclesUrl: 'users/:id/vehicles'
+            baseUrl: 'http://localhost:3000/'
         };
 
         angular.module('psApp').value('dataConfig', dataConfig);

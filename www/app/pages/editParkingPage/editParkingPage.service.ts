@@ -48,7 +48,7 @@ module app.pages.editParkingPage {
         getVehicleByUserId(): any {
             var promise;
 
-            promise = this.restApi.query({ url: 'albums'})
+            promise = this.restApi.query({ url: 'vehicles'})
                 .$promise.then(function(response) {
                     return response;
                 })
