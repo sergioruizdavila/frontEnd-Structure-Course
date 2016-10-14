@@ -11,7 +11,7 @@ module app.pages.logInPage {
     /*           INTERFACES           */
     /**********************************/
     export interface ILogInPageService {
-
+        logIn: (userEmail, userPassword) => any;
     }
 
     /**********************************/
@@ -25,18 +25,33 @@ module app.pages.logInPage {
         static serviceId = 'psApp.pages.logInPage.logInPageService';
 
         /*-- INJECT DEPENDENCIES--*/
-        static $inject = [];
+        static $inject = [
+            'psApp.core.restApi.restApiService'
+        ];
 
 
         /**********************************/
         /*           CONSTRUCTOR          */
         /**********************************/
-        constructor() {}
+        constructor(private restApi: app.core.restApi.IRestApi) {}
 
         /**********************************/
         /*            METHODS             */
         /**********************************/
-        //TODO: Crear el servicio: logInService()
+
+        logIn(userEmail, userPassword): any {
+            var promise;
+            promise = this.restApi.create({ url: 'users/sign_in'}, {email: userEmail, password: userPassword})
+                .$promise.then(function(response) {
+                    return response;
+                })
+                .catch(function() {
+                    return 'Error';
+                });
+
+            return promise;
+        }
+
 
     }
 

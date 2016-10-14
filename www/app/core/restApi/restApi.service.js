@@ -11,21 +11,21 @@ var app;
                 }
                 RestApiService.Api = function ($resource, dataConfig) {
                     var resource = $resource(dataConfig.baseUrl + ':url/:id', { url: '@url' }, {
-                        show: { method: 'GET', params: { id: '@id' } },
-                        query: { method: 'GET', isArray: true },
-                        queryObject: { method: 'GET', isArray: false },
-                        create: { method: 'POST' },
-                        update: { method: 'PUT', params: { id: '@id' } },
-                        remove: { method: 'DELETE', params: { id: '@id' } }
+                        show: { method: 'GET', params: { id: '@id' }, headers: { Accept: 'application/json; charset=utf-8' } },
+                        query: { method: 'GET', isArray: true, headers: { Accept: 'application/json; charset=utf-8' } },
+                        queryObject: { method: 'GET', isArray: false, headers: { Accept: 'application/json; charset=utf-8' } },
+                        create: { method: 'POST', headers: { Accept: 'application/json; charset=utf-8' } },
+                        update: { method: 'PUT', params: { id: '@id' }, headers: { Accept: 'application/json; charset=utf-8' } },
+                        remove: { method: 'DELETE', params: { id: '@id' }, headers: { Accept: 'application/json; charset=utf-8' } }
                     });
                     return resource;
                 };
-                RestApiService.serviceId = 'psApp.core.restApi.restApiService';
-                RestApiService.$inject = [
-                    '$resource'
-                ];
                 return RestApiService;
             }());
+            RestApiService.serviceId = 'psApp.core.restApi.restApiService';
+            RestApiService.$inject = [
+                '$resource'
+            ];
             restApi.RestApiService = RestApiService;
             angular
                 .module('psApp.core.restApi')

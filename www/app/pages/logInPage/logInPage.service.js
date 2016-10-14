@@ -6,12 +6,26 @@ var app;
         (function (logInPage) {
             'use strict';
             var LogInPageService = (function () {
-                function LogInPageService() {
+                function LogInPageService(restApi) {
+                    this.restApi = restApi;
                 }
+                LogInPageService.prototype.logIn = function (userEmail, userPassword) {
+                    var promise;
+                    promise = this.restApi.create({ url: 'users/sign_in' }, { email: userEmail, password: userPassword })
+                        .$promise.then(function (response) {
+                        return response;
+                    })
+                        .catch(function () {
+                        return 'Error';
+                    });
+                    return promise;
+                };
                 return LogInPageService;
             }());
             LogInPageService.serviceId = 'psApp.pages.logInPage.logInPageService';
-            LogInPageService.$inject = [];
+            LogInPageService.$inject = [
+                'psApp.core.restApi.restApiService'
+            ];
             logInPage.LogInPageService = LogInPageService;
             angular
                 .module('psApp.pages.logInPage')

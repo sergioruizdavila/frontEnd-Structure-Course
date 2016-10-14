@@ -31,13 +31,15 @@ module app.pages.logInPage {
         userData: IUserData;
 
         /*-- INJECT DEPENDENCIES--*/
-        static $inject = [];
+        static $inject = [
+            'psApp.pages.logInPage.logInPageService'
+        ];
 
 
         /**********************************/
         /*           CONSTRUCTOR          */
         /**********************************/
-        constructor() {
+        constructor(private logInService: ILogInPageService) {
             this._init();
         }
 
@@ -65,7 +67,12 @@ module app.pages.logInPage {
 
         logIn(): void {
             console.log(this.userData);
-            //TODO: Llamar al metodo logInService del servicio: 'psApp.pages.logInPage.logInPageService' 
+            this.logInService.logIn(this.userData.email, this.userData.password)
+            .then(
+                function(response) {
+                    console.log(response);
+                }
+            );
         }
 
     }

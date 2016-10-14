@@ -13,7 +13,7 @@ var app;
                 };
                 EditParkingPageService.prototype.getVehicleByUserId = function (userEmail, userPassword) {
                     var promise;
-                    promise = this.restApi.create({ url: 'sign_in' }, { email: userEmail, password: userPassword })
+                    promise = this.restApi.queryObject({ url: 'users/3/vehicles' })
                         .$promise.then(function (response) {
                         return response;
                     })
