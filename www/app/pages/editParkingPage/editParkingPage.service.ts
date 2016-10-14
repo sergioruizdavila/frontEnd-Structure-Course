@@ -45,10 +45,10 @@ module app.pages.editParkingPage {
 
         }
 
-        getVehicleByUserId(): any {
+        getVehicleByUserId(userEmail, userPassword): any {
             var promise;
-
-            promise = this.restApi.query({ url: 'vehicles'})
+            //http://parking-system-01.herokuapp.com/v1/users/sign_in?email=gastus2@hotmail.com&password=1234567
+            promise = this.restApi.create({ url: 'sign_in'}, {email: userEmail, password: userPassword})
                 .$promise.then(function(response) {
                     return response;
                 })

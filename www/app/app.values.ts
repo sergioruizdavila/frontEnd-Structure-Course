@@ -20,8 +20,8 @@ module app.values {
         'use strict';
 
         var dataConfig: IDataConfig = {
-            //baseUrl: 'http://parking-system-01.herokuapp.com/v1/',
-            baseUrl: 'http://localhost:3000/'
+            baseUrl: 'http://parking-system-01.herokuapp.com/v1/',
+            //baseUrl: 'http://localhost:3000/'
         };
 
         angular.module('psApp').value('dataConfig', dataConfig);

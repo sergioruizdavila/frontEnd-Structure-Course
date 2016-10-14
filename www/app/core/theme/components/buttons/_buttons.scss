@@ -3,14 +3,22 @@
 /***************************/
 
 .button {
-  margin: 10px;
+  
   text-decoration: none!important;
   cursor: pointer;
   display: inline-block;
 
     /** MODIFIERS **/
 
-    /* BUTTON TYPES */
+    /* BUTTON SIZES */
+    &--small {
+      font-size: 15px;
+      padding: 8px;
+      &__text {
+        text-transform: lowercase!important;
+      }
+    }
+
     &--default {
       font-size: 16px;
       padding: 12px;
@@ -20,6 +28,13 @@
       font-size: 18px;
       padding: 12px 60px;
     }
+
+    &--block {
+        display: block;
+        width: 100%;
+    }
+
+    /* BUTTON TYPES */
     &--border-primary {
       border-bottom: 3px #047c65 solid;
       border-radius: 5px;
@@ -32,6 +47,7 @@
       border-left: 1px #047c65 solid;
       border-radius: 5px;
     }
+
     /* BUTTON COLORS */
     &--primary-color {
       background-color: #00B592;
@@ -39,14 +55,7 @@
     &--secondary-color {
       background-color: transparent;
     }
-    /* BUTTON SIZES */
-    &--small {
-      font-size: 15px;
-      padding: 8px;
-      &__text {
-        text-transform: lowercase!important;
-      }
-    }
+
     /* ELEMENTS */
     &__text-white {
       color: white;
@@ -57,6 +66,7 @@
       text-transform: uppercase;
     }
 
+    /* EVENTS */
     &:hover {
         background-color: #047c65;
         color: white;

@@ -3,7 +3,8 @@
     angular.module('psApp', [
         'psApp.core',
         'psApp.core.restApi',
-        'psApp.pages.editParkingPage'
+        'psApp.pages.editParkingPage',
+        'psApp.pages.logInPage'
     ]).config(config);
     function config($urlRouterProvider) {
         $urlRouterProvider.otherwise('/page');

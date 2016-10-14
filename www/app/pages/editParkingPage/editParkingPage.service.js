@@ -11,9 +11,9 @@ var app;
                 }
                 EditParkingPageService.prototype.getVehicles = function () {
                 };
-                EditParkingPageService.prototype.getVehicleByUserId = function () {
+                EditParkingPageService.prototype.getVehicleByUserId = function (userEmail, userPassword) {
                     var promise;
-                    promise = this.restApi.query({ url: 'vehicles' })
+                    promise = this.restApi.create({ url: 'sign_in' }, { email: userEmail, password: userPassword })
                         .$promise.then(function (response) {
                         return response;
                     })
@@ -22,12 +22,12 @@ var app;
                     });
                     return promise;
                 };
-                EditParkingPageService.serviceId = 'psApp.pages.editParkingPage.editParkingPageService';
-                EditParkingPageService.$inject = [
-                    'psApp.core.restApi.restApiService'
-                ];
                 return EditParkingPageService;
             }());
+            EditParkingPageService.serviceId = 'psApp.pages.editParkingPage.editParkingPageService';
+            EditParkingPageService.$inject = [
+                'psApp.core.restApi.restApiService'
+            ];
             editParkingPage.EditParkingPageService = EditParkingPageService;
             angular
                 .module('psApp.pages.editParkingPage')
