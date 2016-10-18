@@ -9,6 +9,7 @@
 
     angular.module('psApp', [
             'psApp.core',
+            'psApp.localStorage',
             'psApp.core.restApi',
             'psApp.pages.editParkingPage',
             'psApp.pages.logInPage'

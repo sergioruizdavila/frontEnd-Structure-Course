@@ -6,8 +6,9 @@ var app;
         (function (logInPage) {
             'use strict';
             var LogInPageController = (function () {
-                function LogInPageController(logInService, $state) {
+                function LogInPageController(logInService, localStorage, $state) {
                     this.logInService = logInService;
+                    this.localStorage = localStorage;
                     this.$state = $state;
                     this._init();
                 }
@@ -30,6 +31,8 @@ var app;
                             self.message = response.message;
                         }
                         else {
+                            self.localStorage.setItem('auth_token', response.user.auth_token);
+                            self.localStorage.setItem('email', response.user.email);
                             self.$state.go('editParkingPage');
                         }
                     });
@@ -39,6 +42,7 @@ var app;
             LogInPageController.controllerId = 'psApp.pages.logInPage.logInPageController';
             LogInPageController.$inject = [
                 'psApp.pages.logInPage.logInPageService',
+                'psApp.localStorageService',
                 '$state'
             ];
             logInPage.LogInPageController = LogInPageController;

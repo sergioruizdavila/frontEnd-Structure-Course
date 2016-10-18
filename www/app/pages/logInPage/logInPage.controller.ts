@@ -34,6 +34,7 @@ module app.pages.logInPage {
         /*-- INJECT DEPENDENCIES--*/
         static $inject = [
             'psApp.pages.logInPage.logInPageService',
+            'psApp.localStorageService',
             '$state'
         ];
 
@@ -41,7 +42,9 @@ module app.pages.logInPage {
         /**********************************/
         /*           CONSTRUCTOR          */
         /**********************************/
-        constructor(private logInService: ILogInPageService, private $state: angular.ui.IStateService) {
+        constructor(private logInService: ILogInPageService,
+                    private localStorage: any,
+                    private $state: angular.ui.IStateService) {
             this._init();
         }
 
@@ -77,7 +80,9 @@ module app.pages.logInPage {
                 function(response) {
                     if(response.success == false) {
                         self.message = response.message;
-                    } else{
+                    } else  {
+                        self.localStorage.setItem('auth_token', response.user.auth_token);
+                        self.localStorage.setItem('email', response.user.email);
                         self.$state.go('editParkingPage');
                     }
                 }
