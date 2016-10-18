@@ -24,6 +24,7 @@ module app.pages.editParkingPage {
         /*           PROPERTIES           */
         /**********************************/
         static controllerId = 'psApp.pages.editParkingPage.editParkingPageController';
+        vehiclesList: Array<any>;
 
         /*-- INJECT DEPENDENCIES--*/
         static $inject = [
@@ -41,7 +42,7 @@ module app.pages.editParkingPage {
         /* -- INITIALIZE METHOD -- */
         private _init() {
             //Init Variables
-
+            this.vehiclesList = [];
 
             this._activate();
         }
@@ -50,6 +51,8 @@ module app.pages.editParkingPage {
         private _activate(): void {
             //LOG
             console.log('editParkingPage controller actived');
+            
+            this.getVehicleByUserId();
         }
 
 
@@ -61,9 +64,13 @@ module app.pages.editParkingPage {
         }
 
         getVehicleByUserId(): void {
+            let self = this;
             this.EditParkingPageService.getVehicleByUserId(1).then(
                 function(response){
                     console.log('Mis datos obtenidos son:', response);
+                    for (let i = 0; i < response.vehicles.length; i++) {
+                        //self.vehiclesList.push(new app.core.models.vehicle.Vehicle(response.vehicles[i]));
+                    }
                 }
             );
         }

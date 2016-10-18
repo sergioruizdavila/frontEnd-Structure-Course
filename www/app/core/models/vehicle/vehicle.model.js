@@ -65,6 +65,7 @@ var app;
                     });
                     return Vehicle;
                 }());
+                vehicle.Vehicle = Vehicle;
             })(vehicle = models.vehicle || (models.vehicle = {}));
         })(models = core.models || (core.models = {}));
     })(core = app.core || (app.core = {}));

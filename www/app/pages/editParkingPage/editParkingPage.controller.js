@@ -11,25 +11,30 @@ var app;
                     this._init();
                 }
                 EditParkingPageController.prototype._init = function () {
+                    this.vehiclesList = [];
                     this._activate();
                 };
                 EditParkingPageController.prototype._activate = function () {
                     console.log('editParkingPage controller actived');
+                    this.getVehicleByUserId();
                 };
                 EditParkingPageController.prototype.addVehicle = function () {
                     console.log('Entro');
                 };
                 EditParkingPageController.prototype.getVehicleByUserId = function () {
+                    var self = this;
                     this.EditParkingPageService.getVehicleByUserId(1).then(function (response) {
                         console.log('Mis datos obtenidos son:', response);
+                        for (var i = 0; i < response.vehicles.length; i++) {
+                        }
                     });
                 };
-                EditParkingPageController.controllerId = 'psApp.pages.editParkingPage.editParkingPageController';
-                EditParkingPageController.$inject = [
-                    'psApp.pages.editParkingPage.editParkingPageService'
-                ];
                 return EditParkingPageController;
             }());
+            EditParkingPageController.controllerId = 'psApp.pages.editParkingPage.editParkingPageController';
+            EditParkingPageController.$inject = [
+                'psApp.pages.editParkingPage.editParkingPageService'
+            ];
             editParkingPage.EditParkingPageController = EditParkingPageController;
             angular.module('psApp.pages.editParkingPage')
                 .controller(EditParkingPageController.controllerId, EditParkingPageController);
