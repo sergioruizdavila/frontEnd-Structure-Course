@@ -29,17 +29,19 @@ module app.pages.logInPage {
         /**********************************/
         static controllerId = 'psApp.pages.logInPage.logInPageController';
         userData: IUserData;
+        message: string;
 
         /*-- INJECT DEPENDENCIES--*/
         static $inject = [
-            'psApp.pages.logInPage.logInPageService'
+            'psApp.pages.logInPage.logInPageService',
+            '$state'
         ];
 
 
         /**********************************/
         /*           CONSTRUCTOR          */
         /**********************************/
-        constructor(private logInService: ILogInPageService) {
+        constructor(private logInService: ILogInPageService, private $state: angular.ui.IStateService) {
             this._init();
         }
 
@@ -50,6 +52,8 @@ module app.pages.logInPage {
                 email: '',
                 password: ''
             };
+
+            this.message = '';
 
             this._activate();
         }
@@ -66,11 +70,16 @@ module app.pages.logInPage {
         /**********************************/
 
         logIn(): void {
-            console.log(this.userData);
+            var self = this;
+
             this.logInService.logIn(this.userData.email, this.userData.password)
             .then(
                 function(response) {
-                    console.log(response);
+                    if(response.success == false) {
+                        self.message = response.message;
+                    } else{
+                        self.$state.go('editParkingPage');
+                    }
                 }
             );
         }

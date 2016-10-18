@@ -6,8 +6,9 @@ var app;
         (function (logInPage) {
             'use strict';
             var LogInPageController = (function () {
-                function LogInPageController(logInService) {
+                function LogInPageController(logInService, $state) {
                     this.logInService = logInService;
+                    this.$state = $state;
                     this._init();
                 }
                 LogInPageController.prototype._init = function () {
@@ -15,23 +16,30 @@ var app;
                         email: '',
                         password: ''
                     };
+                    this.message = '';
                     this._activate();
                 };
                 LogInPageController.prototype._activate = function () {
                     console.log('logInPage controller actived');
                 };
                 LogInPageController.prototype.logIn = function () {
-                    console.log(this.userData);
+                    var self = this;
                     this.logInService.logIn(this.userData.email, this.userData.password)
                         .then(function (response) {
-                        console.log(response);
+                        if (response.success == false) {
+                            self.message = response.message;
+                        }
+                        else {
+                            self.$state.go('editParkingPage');
+                        }
                     });
                 };
                 return LogInPageController;
             }());
             LogInPageController.controllerId = 'psApp.pages.logInPage.logInPageController';
             LogInPageController.$inject = [
-                'psApp.pages.logInPage.logInPageService'
+                'psApp.pages.logInPage.logInPageService',
+                '$state'
             ];
             logInPage.LogInPageController = LogInPageController;
             angular.module('psApp.pages.logInPage')
