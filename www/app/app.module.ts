@@ -19,4 +19,5 @@
         $urlRouterProvider.otherwise('/page');
     }
 
+
 })();
