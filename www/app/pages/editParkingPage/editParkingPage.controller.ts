@@ -67,19 +67,11 @@ module app.pages.editParkingPage {
             let self = this;
             this.EditParkingPageService.getVehicleByUserId(1).then(
                 function(response){
-                    console.log('Mis datos obtenidos son:', response);
-                    //this.vehicleList = response.vehicles[1];
+
                     for (let i = 0; i < response.vehicles.length; i++) {
                       self.vehicleList.push(response.vehicles[i]);
-                      console.log(self.vehicleList);
                     }
                     self.owner = response.vehicles[0].user.first_name + ' ' + response.vehicles[0].user.last_name;
-                    console.log("xd");
-                    console.log(self.vehicleList);
-//                    for (let i = 0; i < array.length; i++) {
-                      //self.vehicleList.push(new app.core.models.vehicle.(response.vehicles[i]));
-
-//                    }
                 }
             );
         }

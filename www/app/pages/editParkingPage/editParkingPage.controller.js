@@ -25,14 +25,10 @@ var app;
                 EditParkingPageController.prototype.getVehicleByUserId = function () {
                     var self = this;
                     this.EditParkingPageService.getVehicleByUserId(1).then(function (response) {
-                        console.log('Mis datos obtenidos son:', response);
                         for (var i = 0; i < response.vehicles.length; i++) {
                             self.vehicleList.push(response.vehicles[i]);
-                            console.log(self.vehicleList);
                         }
                         self.owner = response.vehicles[0].user.first_name + ' ' + response.vehicles[0].user.last_name;
-                        console.log("xd");
-                        console.log(self.vehicleList);
                     });
                 };
                 return EditParkingPageController;
