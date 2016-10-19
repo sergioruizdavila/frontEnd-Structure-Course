@@ -6,8 +6,7 @@
     <div class="row">
 
         <!-- CARS LIST CONTAINER -->
-        <div id="carsList-container"
-             class="col-xs-12 col-sm-12
+        <div id="carsList-container" class="col-xs-12 col-sm-12
                     col-md-6 col-lg-6
                     editParkingPage__container
                     editParkingPage__container--padding-left">
@@ -15,39 +14,24 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
+                            <th>ID</th>
+                            <th>Model</th>
+                            <th>Year</th>
+                            <th>VIN</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                    <tbody ng-repeat="vehicle in vm.vehicleList">
+                        <th scope="row">{{vehicle.id}}</th>
+                        <td>{{vehicle.model}}</td>
+                        <td>{{vehicle.year}}</td>
+                        <td>{{vehicle.vin}}</td>
                     </tbody>
                 </table>
             </div>
         </div>
 
         <!-- FORM EDIT CAR CONTAINER -->
-        <div id="formEditCar-container"
-             class="col-xs-12 col-sm-12
+        <div id="formEditCar-container" class="col-xs-12 col-sm-12
                     col-md-6 col-lg-6
                     editParkingPage__container
                     editParkingPage__container--padding-right">
@@ -62,10 +46,9 @@
                         <label for="ownerInput">Nombre del dueño</label>
                         <input type="text" class="input input--default input--round" id="ownerInput" placeholder="Nombre completo">
                     </div>
-                    <button type="button"
-                            class="btn button button--border-secondary button--secondary-color button--default">
-                            Agregar
-                        </button>
+                    <button type="button" class="btn button button--border-secondary button--secondary-color button--default">
+                        Agregar
+                    </button>
                 </form>
             </div>
 

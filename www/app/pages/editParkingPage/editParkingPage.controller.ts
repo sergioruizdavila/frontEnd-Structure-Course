@@ -24,8 +24,8 @@ module app.pages.editParkingPage {
         /*           PROPERTIES           */
         /**********************************/
         static controllerId = 'psApp.pages.editParkingPage.editParkingPageController';
-        vehiclesList: Array<any>;
-
+        vehicleList: Array<any>;
+        owner: string;
         /*-- INJECT DEPENDENCIES--*/
         static $inject = [
             'psApp.pages.editParkingPage.editParkingPageService'
@@ -42,7 +42,8 @@ module app.pages.editParkingPage {
         /* -- INITIALIZE METHOD -- */
         private _init() {
             //Init Variables
-            this.vehiclesList = [];
+            this.vehicleList = [];
+            this.owner = "";
 
             this._activate();
         }
@@ -51,7 +52,6 @@ module app.pages.editParkingPage {
         private _activate(): void {
             //LOG
             console.log('editParkingPage controller actived');
-            
             this.getVehicleByUserId();
         }
 
@@ -68,9 +68,18 @@ module app.pages.editParkingPage {
             this.EditParkingPageService.getVehicleByUserId(1).then(
                 function(response){
                     console.log('Mis datos obtenidos son:', response);
+                    //this.vehicleList = response.vehicles[1];
                     for (let i = 0; i < response.vehicles.length; i++) {
-                        //self.vehiclesList.push(new app.core.models.vehicle.Vehicle(response.vehicles[i]));
+                      self.vehicleList.push(response.vehicles[i]);
+                      console.log(self.vehicleList);
                     }
+                    self.owner = response.vehicles[0].user.first_name + ' ' + response.vehicles[0].user.last_name;
+                    console.log("xd");
+                    console.log(self.vehicleList);
+//                    for (let i = 0; i < array.length; i++) {
+                      //self.vehicleList.push(new app.core.models.vehicle.(response.vehicles[i]));
+
+//                    }
                 }
             );
         }
