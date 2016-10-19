@@ -1,29 +1,29 @@
 /**
- * EditParkingPageService
- * @description - Edit Parking Page Service
+ * LogInPageService
+ * @description - Log In Page Service
  */
 
-module app.pages.editParkingPage {
+module app.pages.logInPage {
 
     'use strict';
 
     /**********************************/
     /*           INTERFACES           */
     /**********************************/
-    export interface IEditParkingPageService {
-        getVehicles: () => void;
-        getVehicleByUserId: (userId) => any;
+    export interface ILogInPageService {
+        logIn:(email, password) => any;
+
     }
 
     /**********************************/
     /*         CLASS DEFINITION       */
     /**********************************/
-    export class EditParkingPageService {
+    export class LogInPageService {
 
         /**********************************/
         /*           PROPERTIES           */
         /**********************************/
-        static serviceId = 'psApp.pages.editParkingPage.editParkingPageService';
+        static serviceId = 'psApp.pages.logInPage.logInPageService';
 
         /*-- INJECT DEPENDENCIES--*/
         static $inject = [
@@ -39,14 +39,12 @@ module app.pages.editParkingPage {
         /**********************************/
         /*            METHODS             */
         /**********************************/
-        getVehicles(): any {
+        //TODO: Crear el servicio: logInService()
 
-        }
-
-        getVehicleByUserId(): any {
+        logIn(email, password): any {
             var promise;
 
-            promise = this.restApi.queryObject({ url: 'users/3/vehicles'})
+            promise = this.restApi.create({ url: 'users/sign_in'},{email:email, password:password})
                 .$promise.then(function(response) {
                     return response;
                 })
@@ -56,10 +54,12 @@ module app.pages.editParkingPage {
 
             return promise;
         }
-    }
+
+}
 
     angular
-        .module('psApp.pages.editParkingPage')
-        .service(EditParkingPageService.serviceId, EditParkingPageService);
+        .module('psApp.pages.logInPage')
+        .service(LogInPageService.serviceId, LogInPageService);
+
 
 }

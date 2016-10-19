@@ -13,7 +13,7 @@ var app;
                 };
                 EditParkingPageService.prototype.getVehicleByUserId = function () {
                     var promise;
-                    promise = this.restApi.query({ url: 'albums' })
+                    promise = this.restApi.queryObject({ url: 'users/3/vehicles' })
                         .$promise.then(function (response) {
                         return response;
                     })

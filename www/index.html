@@ -24,10 +24,19 @@
                         <img alt="Brand" src="assets/images/logo.png">
                     </a>
                 </div>
+
                 <div class="collapse navbar-collapse">
+
                     <a class="ps-navbar__photo navbar-right" href="#">
                         <img alt="Brand" src="assets/images/profile-photo.jpg" width="50" height="50">
                     </a>
+
+                    <a ui-sref="logInPage"
+                        class="ps-navbar__logIn navbar-right"
+                        href="#">
+                        LogIn
+                    </a>
+
                 </div>
             </div>
         </nav>
@@ -44,38 +53,34 @@
 
         </div>
 
-        <!-- Large Button-->
-        <a href="#" ui-sref="editParkingPage" class="button button--border-primary button--primary-color button--large">
-            <span class="button__text-white">Ir a Editar un Parking</span>
-        </a>
-        <!--<a href="#/edit" class="button button--border-primary button--primary-color button--large">
-            <span class="button__text-white">Ir a Editar un Parking</span>
-        </a>-->
-
     </div>
 
 
 
-<!--bower_components-->
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/angular/angular.min.js"></script>
-<script src="bower_components/angular-resource/angular-resource.min.js"></script>
-<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!--bower_components-->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
-<!-- Main App javascript files-->
-<script src="app/app.module.js"></script>
-<script src="app/app.core.module.js"></script>
-<script src="app/app.values.js"></script>
-<script src="app/app.run.js"></script>
-<script src="app/core/restApi/restApi.config.js"></script>
-<script src="app/core/restApi/restApi.service.js"></script>
+    <!-- Main App javascript files-->
+    <script src="app/app.module.js"></script>
+    <script src="app/app.core.module.js"></script>
+    <script src="app/app.values.js"></script>
+    <script src="app/app.run.js"></script>
+    <script src="app/core/restApi/restApi.config.js"></script>
+    <script src="app/core/restApi/restApi.service.js"></script>
 
-<!-- Components -->
+    <!-- Components -->
 
-<!-- Pages -->
-<script src="app/pages/editParkingPage/editParkingPage.config.js"></script>
-<script src="app/pages/editParkingPage/editParkingPage.controller.js"></script>
-<script src="app/pages/editParkingPage/editParkingPage.service.js"></script>
+    <!-- Pages -->
+    <script src="app/pages/editParkingPage/editParkingPage.config.js"></script>
+    <script src="app/pages/editParkingPage/editParkingPage.controller.js"></script>
+    <script src="app/pages/editParkingPage/editParkingPage.service.js"></script>
+
+    <script src="app/pages/logInPage/logInPage.config.js"></script>
+    <script src="app/pages/logInPage/logInPage.controller.js"></script>
+    <script src="app/pages/logInPage/logInPage.service.js"></script>
 
 </body>
 

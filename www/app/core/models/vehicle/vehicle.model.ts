@@ -7,7 +7,7 @@
 module app.core.models.vehicle {
 
     /* CLASS DEFINITION */
-    class Vehicle {
+    export class Vehicle {
 
         /* PROPERTIES */
         private _id: number;

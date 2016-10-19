@@ -5,8 +5,7 @@ var app;
         (function () {
             'use strict';
             var dataConfig = {
-                baseUrl: 'https://localhost:3000/',
-                userVehiclesUrl: 'users/:id/vehicles'
+                baseUrl: 'https://parking-system-01.herokuapp.com/v1/',
             };
             angular.module('psApp').value('dataConfig', dataConfig);
         })();

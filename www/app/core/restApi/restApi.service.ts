@@ -32,13 +32,17 @@ module app.core.restApi {
 
         /*-- INJECT DEPENDENCIES--*/
         static $inject = [
-            '$resource'
+            '$resource',
+            'psApp.localStorageService',
+            'dataConfig'
         ];
 
         /**********************************/
         /*           CONSTRUCTOR          */
         /**********************************/
-        constructor(private $resource: ng.resource.IResourceService) {
+        constructor(private $resource: ng.resource.IResourceService,
+                    private localStorage,
+                    dataConfig: app.values.IDataConfig) {
         }
 
         /**********************************/
@@ -48,12 +52,12 @@ module app.core.restApi {
 
             var resource = $resource(dataConfig.baseUrl + ':url/:id', { url: '@url'},
             {
-                show: { method: 'GET', params: {id: '@id'} },
-                query: { method: 'GET', isArray: true },
-                queryObject: { method: 'GET', isArray: false },
-                create: { method: 'POST' },
-                update: { method: 'PUT', params: { id: '@id'} },
-                remove: { method: 'DELETE', params: { id: '@id' } }
+                show: { method: 'GET', params: {id: '@id'}, headers: {Accept: 'application/json; charset=utf-8', 'X-API-TOKEN': localStorage.getItem('auth_token'), 'X-API-EMAIL': localStorage.getItem('email')} },
+                query: { method: 'GET', isArray: true, headers: {Accept: 'application/json; charset=utf-8', 'X-API-TOKEN': localStorage.getItem('auth_token'), 'X-API-EMAIL': localStorage.getItem('email')} },
+                queryObject: { method: 'GET', isArray: false , headers: {Accept: 'application/json; charset=utf-8', 'X-API-TOKEN': localStorage.getItem('auth_token'), 'X-API-EMAIL': localStorage.getItem('email')}},
+                create: { method: 'POST', headers: {Accept: 'application/json; charset=utf-8', 'X-API-TOKEN': localStorage.getItem('auth_token'), 'X-API-EMAIL': localStorage.getItem('email')} },
+                update: { method: 'PUT', params: { id: '@id'}, headers: {Accept: 'application/json; charset=utf-8', 'X-API-TOKEN': localStorage.getItem('auth_token'), 'X-API-EMAIL': localStorage.getItem('email')} },
+                remove: { method: 'DELETE', params: { id: '@id' }, headers: {Accept: 'application/json; charset=utf-8', 'X-API-TOKEN': localStorage.getItem('auth_token'), 'X-API-EMAIL': localStorage.getItem('email')} }
             });
 
             return <IRestApi>resource;

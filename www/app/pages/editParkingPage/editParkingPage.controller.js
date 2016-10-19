@@ -11,17 +11,25 @@ var app;
                     this._init();
                 }
                 EditParkingPageController.prototype._init = function () {
+                    this.vehiclesList = [];
+                    this.owner = "";
                     this._activate();
                 };
                 EditParkingPageController.prototype._activate = function () {
                     console.log('editParkingPage controller actived');
+                    this.getVehicleByUserId();
                 };
                 EditParkingPageController.prototype.addVehicle = function () {
                     console.log('Entro');
                 };
                 EditParkingPageController.prototype.getVehicleByUserId = function () {
+                    var self = this;
                     this.EditParkingPageService.getVehicleByUserId(1).then(function (response) {
                         console.log('Mis datos obtenidos son:', response);
+                        for (var i = 0; i < response.vehicles.length; i++) {
+                            self.vehiclesList.push(response.vehicles[i]);
+                        }
+                        self.owner = self.vehiclesList[0].user.first_name + " " + self.vehiclesList[0].user.last_name;
                     });
                 };
                 EditParkingPageController.controllerId = 'psApp.pages.editParkingPage.editParkingPageController';
