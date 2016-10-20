@@ -11,12 +11,13 @@ module app.pages.editParkingPage {
     /*           INTERFACES           */
     /**********************************/
     export interface IEditParkingPageController {
-        addVehicle: () => void;
+        addEditVehicle: () => void;
         getVehicleByUserId: () => void;
         editVehicle: (vehicle) => void;
     }
 
     export interface IVehicleData {
+        id: string;
         model: string;
         year: string;
         vin: string;
@@ -35,6 +36,7 @@ module app.pages.editParkingPage {
         owner: string;
         vehicleData: IVehicleData;
         message: string;
+        buttonType: string;
 
         /*-- INJECT DEPENDENCIES--*/
         static $inject = [
@@ -57,12 +59,15 @@ module app.pages.editParkingPage {
             this.owner = "";
 
             this.vehicleData = {
+                id: '',
                 model: '',
                 year: '',
                 vin: ''
             };
 
             this.message = '';
+
+            this.buttonType = 'Agregar';
 
             this._activate();
         }
@@ -79,7 +84,15 @@ module app.pages.editParkingPage {
         /*             METHODS            */
         /**********************************/
 
-        addVehicle(): void {
+        cleanForm(): void {
+            this.vehicleData.id = '';
+            this.vehicleData.model = '';
+            this.vehicleData.year = '';
+            this.vehicleData.vin = '';
+            this.buttonType = 'Agregar';
+        }
+
+        addEditVehicle(): void {
 
             var self = this;
 
@@ -105,6 +118,7 @@ module app.pages.editParkingPage {
             this.vehicleData.model = vehicle.model;
             this.vehicleData.year = vehicle.year;
             this.vehicleData.vin = vehicle.vin;
+            this.buttonType = 'Editar';
 
         }
 

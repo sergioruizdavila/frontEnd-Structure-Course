@@ -11,7 +11,11 @@
                     editParkingPage__container
                     editParkingPage__container--padding-left">
             <div class="box">
-                <h1>{{ vm.owner }} Vehicle's</h1>
+                <h1>{{ vm.owner }} Vehicle's
+                    <button ng-click="vm.cleanForm()"
+                            type="button"
+                            name="button">+</button>
+                </h1>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -79,9 +83,9 @@
                     <button type="button"
                             class="btn button button--border-secondary
                                    button--secondary-color button--default"
-                            ng-click="vm.addVehicle()">
-                            Agregar
-                        </button>
+                            ng-click="vm.addEditVehicle()">
+                            {{vm.buttonType}}
+                    </button>
                 </form>
             </div>
 

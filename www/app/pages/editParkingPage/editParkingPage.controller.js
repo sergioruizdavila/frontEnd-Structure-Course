@@ -14,18 +14,27 @@ var app;
                     this.vehicleList = [];
                     this.owner = "";
                     this.vehicleData = {
+                        id: '',
                         model: '',
                         year: '',
                         vin: ''
                     };
                     this.message = '';
+                    this.buttonType = 'Agregar';
                     this._activate();
                 };
                 EditParkingPageController.prototype._activate = function () {
                     console.log('editParkingPage controller actived');
                     this.getVehicleByUserId();
                 };
-                EditParkingPageController.prototype.addVehicle = function () {
+                EditParkingPageController.prototype.cleanForm = function () {
+                    this.vehicleData.id = '';
+                    this.vehicleData.model = '';
+                    this.vehicleData.year = '';
+                    this.vehicleData.vin = '';
+                    this.buttonType = 'Agregar';
+                };
+                EditParkingPageController.prototype.addEditVehicle = function () {
                     var self = this;
                     this.EditParkingPageService.addVehicle(this.vehicleData.model, this.vehicleData.year, this.vehicleData.vin)
                         .then(function (response) {
@@ -43,6 +52,7 @@ var app;
                     this.vehicleData.model = vehicle.model;
                     this.vehicleData.year = vehicle.year;
                     this.vehicleData.vin = vehicle.vin;
+                    this.buttonType = 'Editar';
                 };
                 EditParkingPageController.prototype.getVehicleByUserId = function () {
                     var self = this;
@@ -54,12 +64,12 @@ var app;
                             + response.vehicles[0].user.last_name;
                     });
                 };
-                EditParkingPageController.controllerId = 'psApp.pages.editParkingPage.editParkingPageController';
-                EditParkingPageController.$inject = [
-                    'psApp.pages.editParkingPage.editParkingPageService'
-                ];
                 return EditParkingPageController;
             }());
+            EditParkingPageController.controllerId = 'psApp.pages.editParkingPage.editParkingPageController';
+            EditParkingPageController.$inject = [
+                'psApp.pages.editParkingPage.editParkingPageService'
+            ];
             editParkingPage.EditParkingPageController = EditParkingPageController;
             angular.module('psApp.pages.editParkingPage')
                 .controller(EditParkingPageController.controllerId, EditParkingPageController);
