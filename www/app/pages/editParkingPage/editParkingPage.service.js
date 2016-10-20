@@ -9,9 +9,7 @@ var app;
                 function EditParkingPageService(restApi) {
                     this.restApi = restApi;
                 }
-                EditParkingPageService.prototype.getVehicles = function () {
-                };
-                EditParkingPageService.prototype.getVehicleByUserId = function (userEmail, userPassword) {
+                EditParkingPageService.prototype.getVehicleByUserId = function () {
                     var promise;
                     promise = this.restApi.queryObject({ url: 'users/3/vehicles' })
                         .$promise.then(function (response) {
@@ -22,12 +20,24 @@ var app;
                     });
                     return promise;
                 };
+                EditParkingPageService.prototype.addVehicle = function (vehicleModel, vehicleYear, vehicleVin) {
+                    var promise;
+                    promise = this.restApi.create({ url: 'users/3/vehicles' }, { model: vehicleModel,
+                        year: vehicleYear, vin: vehicleVin })
+                        .$promise.then(function (response) {
+                        return response;
+                    })
+                        .catch(function () {
+                        return 'Error';
+                    });
+                    return promise;
+                };
+                EditParkingPageService.serviceId = 'psApp.pages.editParkingPage.editParkingPageService';
+                EditParkingPageService.$inject = [
+                    'psApp.core.restApi.restApiService'
+                ];
                 return EditParkingPageService;
             }());
-            EditParkingPageService.serviceId = 'psApp.pages.editParkingPage.editParkingPageService';
-            EditParkingPageService.$inject = [
-                'psApp.core.restApi.restApiService'
-            ];
             editParkingPage.EditParkingPageService = EditParkingPageService;
             angular
                 .module('psApp.pages.editParkingPage')

@@ -11,8 +11,8 @@ module app.pages.editParkingPage {
     /*           INTERFACES           */
     /**********************************/
     export interface IEditParkingPageService {
-        getVehicles: () => void;
-        getVehicleByUserId: (userId) => any;
+        getVehicleByUserId: () => any;
+        addVehicle: (vehicleModel, vehicleYear, vehicleVin) => any;
     }
 
     /**********************************/
@@ -41,11 +41,8 @@ module app.pages.editParkingPage {
         /**********************************/
         /*            METHODS             */
         /**********************************/
-        getVehicles(): any {
 
-        }
-
-        getVehicleByUserId(userEmail, userPassword): any {
+        getVehicleByUserId(): any {
             var promise;
             promise = this.restApi.queryObject({ url: 'users/3/vehicles'})
                 .$promise.then(function(response) {
@@ -55,6 +52,19 @@ module app.pages.editParkingPage {
                     return 'Error';
                 });
 
+            return promise;
+        }
+
+        addVehicle(vehicleModel, vehicleYear, vehicleVin): any {
+            var promise;
+            promise = this.restApi.create({ url: 'users/3/vehicles'}, {model: vehicleModel,
+                                            year: vehicleYear, vin: vehicleVin})
+                .$promise.then(function(response) {
+                    return response;
+                })
+                .catch(function() {
+                    return 'Error';
+                });
             return promise;
         }
     }
