@@ -24,7 +24,7 @@ var app;
                 };
                 EditParkingPageController.prototype.getVehicleByUserId = function () {
                     var self = this;
-                    this.EditParkingPageService.getVehicleByUserId(1).then(function (response) {
+                    this.EditParkingPageService.getVehicleByUserId().then(function (response) {
                         for (var i = 0; i < response.vehicles.length; i++) {
                             self.vehicleList.push(response.vehicles[i]);
                         }

@@ -11,8 +11,7 @@ module app.pages.editParkingPage {
     /*           INTERFACES           */
     /**********************************/
     export interface IEditParkingPageService {
-        getVehicles: () => void;
-        getVehicleByUserId: (userId) => any;
+        getVehicleByUserId: () => any;
     }
 
     /**********************************/
@@ -41,11 +40,7 @@ module app.pages.editParkingPage {
         /**********************************/
         /*            METHODS             */
         /**********************************/
-        getVehicles(): any {
-
-        }
-
-        getVehicleByUserId(userEmail, userPassword): any {
+        getVehicleByUserId(): any {
             var promise;
             promise = this.restApi.queryObject({ url: 'users/3/vehicles'})
                 .$promise.then(function(response) {

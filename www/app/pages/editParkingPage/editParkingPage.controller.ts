@@ -65,7 +65,7 @@ module app.pages.editParkingPage {
 
         getVehicleByUserId(): void {
             let self = this;
-            this.EditParkingPageService.getVehicleByUserId(1).then(
+            this.EditParkingPageService.getVehicleByUserId().then(
                 function(response){
 
                     for (let i = 0; i < response.vehicles.length; i++) {

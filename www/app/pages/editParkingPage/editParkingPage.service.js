@@ -9,9 +9,7 @@ var app;
                 function EditParkingPageService(restApi) {
                     this.restApi = restApi;
                 }
-                EditParkingPageService.prototype.getVehicles = function () {
-                };
-                EditParkingPageService.prototype.getVehicleByUserId = function (userEmail, userPassword) {
+                EditParkingPageService.prototype.getVehicleByUserId = function () {
                     var promise;
                     promise = this.restApi.queryObject({ url: 'users/3/vehicles' })
                         .$promise.then(function (response) {
