@@ -20,12 +20,12 @@ var app;
                     });
                     return promise;
                 };
+                LogInPageService.serviceId = 'psApp.pages.logInPage.logInPageService';
+                LogInPageService.$inject = [
+                    'psApp.core.restApi.restApiService'
+                ];
                 return LogInPageService;
             }());
-            LogInPageService.serviceId = 'psApp.pages.logInPage.logInPageService';
-            LogInPageService.$inject = [
-                'psApp.core.restApi.restApiService'
-            ];
             logInPage.LogInPageService = LogInPageService;
             angular
                 .module('psApp.pages.logInPage')

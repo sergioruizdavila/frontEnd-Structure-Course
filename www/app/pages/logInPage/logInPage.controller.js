@@ -37,14 +37,14 @@ var app;
                         }
                     });
                 };
+                LogInPageController.controllerId = 'psApp.pages.logInPage.logInPageController';
+                LogInPageController.$inject = [
+                    'psApp.pages.logInPage.logInPageService',
+                    'psApp.localStorageService',
+                    '$state'
+                ];
                 return LogInPageController;
             }());
-            LogInPageController.controllerId = 'psApp.pages.logInPage.logInPageController';
-            LogInPageController.$inject = [
-                'psApp.pages.logInPage.logInPageService',
-                'psApp.localStorageService',
-                '$state'
-            ];
             logInPage.LogInPageController = LogInPageController;
             angular.module('psApp.pages.logInPage')
                 .controller(LogInPageController.controllerId, LogInPageController);

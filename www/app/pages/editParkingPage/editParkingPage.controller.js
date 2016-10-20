@@ -13,6 +13,12 @@ var app;
                 EditParkingPageController.prototype._init = function () {
                     this.vehicleList = [];
                     this.owner = "";
+                    this.vehicleData = {
+                        model: '',
+                        year: '',
+                        vin: ''
+                    };
+                    this.message = '';
                     this._activate();
                 };
                 EditParkingPageController.prototype._activate = function () {
@@ -20,7 +26,23 @@ var app;
                     this.getVehicleByUserId();
                 };
                 EditParkingPageController.prototype.addVehicle = function () {
-                    console.log('Entro');
+                    var self = this;
+                    this.EditParkingPageService.addVehicle(this.vehicleData.model, this.vehicleData.year, this.vehicleData.vin)
+                        .then(function (response) {
+                        if (response.vehicle == false) {
+                            self.message = "No pudo crearse";
+                        }
+                        else {
+                            self.message = "Creación exitosa";
+                            self.vehicleList.push(response.vehicle);
+                        }
+                    });
+                };
+                EditParkingPageController.prototype.editVehicle = function (vehicle) {
+                    console.log(vehicle);
+                    this.vehicleData.model = vehicle.model;
+                    this.vehicleData.year = vehicle.year;
+                    this.vehicleData.vin = vehicle.vin;
                 };
                 EditParkingPageController.prototype.getVehicleByUserId = function () {
                     var self = this;
@@ -28,15 +50,16 @@ var app;
                         for (var i = 0; i < response.vehicles.length; i++) {
                             self.vehicleList.push(response.vehicles[i]);
                         }
-                        self.owner = response.vehicles[0].user.first_name + ' ' + response.vehicles[0].user.last_name;
+                        self.owner = response.vehicles[0].user.first_name + ' '
+                            + response.vehicles[0].user.last_name;
                     });
                 };
+                EditParkingPageController.controllerId = 'psApp.pages.editParkingPage.editParkingPageController';
+                EditParkingPageController.$inject = [
+                    'psApp.pages.editParkingPage.editParkingPageService'
+                ];
                 return EditParkingPageController;
             }());
-            EditParkingPageController.controllerId = 'psApp.pages.editParkingPage.editParkingPageController';
-            EditParkingPageController.$inject = [
-                'psApp.pages.editParkingPage.editParkingPageService'
-            ];
             editParkingPage.EditParkingPageController = EditParkingPageController;
             angular.module('psApp.pages.editParkingPage')
                 .controller(EditParkingPageController.controllerId, EditParkingPageController);
