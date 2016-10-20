@@ -20,12 +20,13 @@ var app;
                     };
                     this.message = '';
                     this._activate();
+                    this.buttonType = 'Agregar';
                 };
                 EditParkingPageController.prototype._activate = function () {
                     console.log('editParkingPage controller actived');
                     this.getVehicleByUserId();
                 };
-                EditParkingPageController.prototype.addVehicle = function () {
+                EditParkingPageController.prototype.addEditVehicle = function () {
                     var self = this;
                     this.EditParkingPageService.addVehicle(this.vehicleData.model, this.vehicleData.year, this.vehicleData.vin)
                         .then(function (response) {
@@ -43,6 +44,7 @@ var app;
                     this.vehicleData.model = vehicle.model;
                     this.vehicleData.year = vehicle.year;
                     this.vehicleData.vin = vehicle.vin;
+                    this.buttonType = 'Editar';
                 };
                 EditParkingPageController.prototype.getVehicleByUserId = function () {
                     var self = this;

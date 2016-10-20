@@ -11,7 +11,7 @@ module app.pages.editParkingPage {
     /*           INTERFACES           */
     /**********************************/
     export interface IEditParkingPageController {
-        addVehicle: () => void;
+        addEditVehicle: () => void;
         getVehicleByUserId: () => void;
         editVehicle: (vehicle) => void;
     }
@@ -35,7 +35,7 @@ module app.pages.editParkingPage {
         owner: string;
         vehicleData: IVehicleData;
         message: string;
-
+        buttonType: string;
         /*-- INJECT DEPENDENCIES--*/
         static $inject = [
             'psApp.pages.editParkingPage.editParkingPageService'
@@ -65,6 +65,8 @@ module app.pages.editParkingPage {
             this.message = '';
 
             this._activate();
+
+            this.buttonType = 'Agregar';
         }
 
         /* -- ACTIVATE METHOD -- */
@@ -79,7 +81,7 @@ module app.pages.editParkingPage {
         /*             METHODS            */
         /**********************************/
 
-        addVehicle(): void {
+        addEditVehicle(): void {
 
             var self = this;
 
@@ -105,6 +107,7 @@ module app.pages.editParkingPage {
             this.vehicleData.model = vehicle.model;
             this.vehicleData.year = vehicle.year;
             this.vehicleData.vin = vehicle.vin;
+            this.buttonType = 'Editar';
 
         }
 
