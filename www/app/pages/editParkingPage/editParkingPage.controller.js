@@ -16,11 +16,13 @@ var app;
                     this.vehicleData = {
                         model: '',
                         year: '',
-                        vin: ''
+                        vin: '',
+                        id: ''
                     };
                     this.message = '';
                     this._activate();
                     this.buttonType = 'Agregar';
+                    this.formTitle = "Add Vehicle's";
                 };
                 EditParkingPageController.prototype._activate = function () {
                     console.log('editParkingPage controller actived');
@@ -28,23 +30,48 @@ var app;
                 };
                 EditParkingPageController.prototype.addEditVehicle = function () {
                     var self = this;
-                    this.EditParkingPageService.addVehicle(this.vehicleData.model, this.vehicleData.year, this.vehicleData.vin)
-                        .then(function (response) {
-                        if (response.vehicle == false) {
-                            self.message = "No pudo crearse";
-                        }
-                        else {
-                            self.message = "Creación exitosa";
-                            self.vehicleList.push(response.vehicle);
-                        }
-                    });
+                    if (this.vehicleData.id) {
+                        this.EditParkingPageService.editVehicle(this.vehicleData.id, this.vehicleData.model, this.vehicleData.year, this.vehicleData.vin)
+                            .then(function (response) {
+                            if (response.vehicle == false) {
+                                self.message = "No pudo crearse";
+                            }
+                            else {
+                                self.message = "Creación exitosa";
+                            }
+                        });
+                    }
+                    else {
+                        this.EditParkingPageService.addVehicle(this.vehicleData.model, this.vehicleData.year, this.vehicleData.vin)
+                            .then(function (response) {
+                            if (response.vehicle == false) {
+                                self.message = "No pudo crearse";
+                            }
+                            else {
+                                self.message = "Creación exitosa";
+                                self.vehicleList.push(response.vehicle);
+                            }
+                        });
+                    }
                 };
                 EditParkingPageController.prototype.editVehicle = function (vehicle) {
                     console.log(vehicle);
+                    this.vehicleData.id = vehicle.id;
                     this.vehicleData.model = vehicle.model;
                     this.vehicleData.year = vehicle.year;
                     this.vehicleData.vin = vehicle.vin;
                     this.buttonType = 'Editar';
+                    this.formTitle = "Edit Vehicle's";
+                    this.message = "";
+                };
+                EditParkingPageController.prototype.cleanForm = function () {
+                    this.vehicleData.model = "";
+                    this.vehicleData.year = "";
+                    this.vehicleData.vin = "";
+                    this.vehicleData.id = "";
+                    this.buttonType = 'Agregar';
+                    this.formTitle = "Add Vehicle's";
+                    this.message = "";
                 };
                 EditParkingPageController.prototype.getVehicleByUserId = function () {
                     var self = this;

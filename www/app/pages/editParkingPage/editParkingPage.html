@@ -11,7 +11,8 @@
                     editParkingPage__container
                     editParkingPage__container--padding-left">
             <div class="box">
-                <h1>{{ vm.owner }} Vehicle's <button type="button" class="btn button button--add"> + </button></h1>
+                <h1>{{ vm.owner }} Vehicle's <button type="button" class="btn button button--add"
+                                ng-click="vm.cleanForm()"> + </button></h1>
                 <table class="table table-hover">
                     <thead>
                         <tr>
@@ -50,7 +51,7 @@
 
             <div class="box">
                 <form>
-                    <h1>Add Vehicle's</h1>
+                    <h1>{{vm.formTitle}}</h1>
                     <div class="form-group">
                         <label for="vehicleModel">Modelo del vehículo </label>
                         <input type="text" class="input input--default input--round"

@@ -13,6 +13,7 @@ module app.pages.editParkingPage {
     export interface IEditParkingPageService {
         getVehicleByUserId: () => any;
         addVehicle: (vehicleModel, vehicleYear, vehicleVin) => any;
+        editVehicle: (vehicleId,vehicleModel, vehicleYear, vehicleVin) => any;
     }
 
     /**********************************/
@@ -59,6 +60,20 @@ module app.pages.editParkingPage {
             var promise;
             promise = this.restApi.create({ url: 'users/3/vehicles'}, {model: vehicleModel,
                                             year: vehicleYear, vin: vehicleVin})
+                .$promise.then(function(response) {
+                    return response;
+                })
+                .catch(function() {
+                    return 'Error';
+                });
+            return promise;
+        }
+
+        editVehicle(vehicleId, vehicleModel, vehicleYear, vehicleVin){
+            var promise;
+            promise = this.restApi.update(
+                { url: 'users/3/vehicles'},
+                {id:vehicleId, model: vehicleModel, year: vehicleYear, vin: vehicleVin})
                 .$promise.then(function(response) {
                     return response;
                 })

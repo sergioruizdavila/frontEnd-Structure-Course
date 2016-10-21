@@ -32,6 +32,17 @@ var app;
                     });
                     return promise;
                 };
+                EditParkingPageService.prototype.editVehicle = function (vehicleId, vehicleModel, vehicleYear, vehicleVin) {
+                    var promise;
+                    promise = this.restApi.update({ url: 'users/3/vehicles' }, { id: vehicleId, model: vehicleModel, year: vehicleYear, vin: vehicleVin })
+                        .$promise.then(function (response) {
+                        return response;
+                    })
+                        .catch(function () {
+                        return 'Error';
+                    });
+                    return promise;
+                };
                 EditParkingPageService.serviceId = 'psApp.pages.editParkingPage.editParkingPageService';
                 EditParkingPageService.$inject = [
                     'psApp.core.restApi.restApiService'

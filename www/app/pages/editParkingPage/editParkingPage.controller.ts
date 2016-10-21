@@ -20,6 +20,7 @@ module app.pages.editParkingPage {
         model: string;
         year: string;
         vin: string;
+        id: string;
     }
 
     /**********************************/
@@ -36,6 +37,7 @@ module app.pages.editParkingPage {
         vehicleData: IVehicleData;
         message: string;
         buttonType: string;
+        formTitle: string;
         /*-- INJECT DEPENDENCIES--*/
         static $inject = [
             'psApp.pages.editParkingPage.editParkingPageService'
@@ -59,7 +61,8 @@ module app.pages.editParkingPage {
             this.vehicleData = {
                 model: '',
                 year: '',
-                vin: ''
+                vin: '',
+                id: ''
             };
 
             this.message = '';
@@ -67,6 +70,8 @@ module app.pages.editParkingPage {
             this._activate();
 
             this.buttonType = 'Agregar';
+
+            this.formTitle = "Add Vehicle's";
         }
 
         /* -- ACTIVATE METHOD -- */
@@ -85,30 +90,68 @@ module app.pages.editParkingPage {
 
             var self = this;
 
-            this.EditParkingPageService.addVehicle(
-                    this.vehicleData.model,
-                    this.vehicleData.year,
-                    this.vehicleData.vin)
-            .then(
-                function(response) {
-                    if(response.vehicle == false) {
-                        self.message = "No pudo crearse";
-                    } else  {
-                        self.message = "Creación exitosa";
-                        self.vehicleList.push(response.vehicle);
+            if(this.vehicleData.id){
+                /*Edit Vehicle*/
+
+                this.EditParkingPageService.editVehicle(
+                        this.vehicleData.id,
+                        this.vehicleData.model,
+                        this.vehicleData.year,
+                        this.vehicleData.vin)
+                .then(
+                    function(response) {
+                        if(response.vehicle == false) {
+                            self.message = "No pudo crearse";
+                        } else  {
+                            self.message = "Creación exitosa";
+                            //No push sino update list//    
+                            //self.vehicleList.push(response.vehicle);
+                        }
+
                     }
-                }
-            );
+                );
+
+            }else{
+                /*Add Vehicle*/
+
+                this.EditParkingPageService.addVehicle(
+                        this.vehicleData.model,
+                        this.vehicleData.year,
+                        this.vehicleData.vin)
+                .then(
+                    function(response) {
+                        if(response.vehicle == false) {
+                            self.message = "No pudo crearse";
+                        } else  {
+                            self.message = "Creación exitosa";
+                            self.vehicleList.push(response.vehicle);
+                        }
+
+                    }
+                );
+            }
 
         }
 
         editVehicle(vehicle): void{
             console.log(vehicle);
+            this.vehicleData.id = vehicle.id;
             this.vehicleData.model = vehicle.model;
             this.vehicleData.year = vehicle.year;
             this.vehicleData.vin = vehicle.vin;
             this.buttonType = 'Editar';
+            this.formTitle = "Edit Vehicle's";
+            this.message = "";
+        }
 
+        cleanForm(): void{
+            this.vehicleData.model = "";
+            this.vehicleData.year = "";
+            this.vehicleData.vin = "";
+            this.vehicleData.id = "";
+            this.buttonType = 'Agregar';
+            this.formTitle = "Add Vehicle's";
+            this.message = "";
         }
 
         getVehicleByUserId(): void {
