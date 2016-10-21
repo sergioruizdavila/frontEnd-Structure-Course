@@ -32,12 +32,23 @@ var app;
                     });
                     return promise;
                 };
-                EditParkingPageService.serviceId = 'psApp.pages.editParkingPage.editParkingPageService';
-                EditParkingPageService.$inject = [
-                    'psApp.core.restApi.restApiService'
-                ];
+                EditParkingPageService.prototype.editVehicle = function (vehicleId, vehicleModel, vehicleYear, vehicleVin) {
+                    var promise;
+                    promise = this.restApi.update({ url: 'users/3/vehicles' }, { id: vehicleId, model: vehicleModel, year: vehicleYear, vin: vehicleVin })
+                        .$promise.then(function (response) {
+                        return response;
+                    })
+                        .catch(function () {
+                        return 'Error';
+                    });
+                    return promise;
+                };
                 return EditParkingPageService;
             }());
+            EditParkingPageService.serviceId = 'psApp.pages.editParkingPage.editParkingPageService';
+            EditParkingPageService.$inject = [
+                'psApp.core.restApi.restApiService'
+            ];
             editParkingPage.EditParkingPageService = EditParkingPageService;
             angular
                 .module('psApp.pages.editParkingPage')
