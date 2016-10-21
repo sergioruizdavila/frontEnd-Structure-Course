@@ -6,8 +6,9 @@ var app;
         (function (editParkingPage) {
             'use strict';
             var EditParkingPageController = (function () {
-                function EditParkingPageController(EditParkingPageService) {
+                function EditParkingPageController(EditParkingPageService, $scope) {
                     this.EditParkingPageService = EditParkingPageService;
+                    this.$scope = $scope;
                     this._init();
                 }
                 EditParkingPageController.prototype._init = function () {
@@ -47,7 +48,7 @@ var app;
                             }
                             else {
                                 self.message = "Edición exitosa";
-                                self.vehicleList.push(response.vehicle);
+                                self.editElement(self.vehicleList, response.vehicle);
                             }
                         });
                     }
@@ -84,11 +85,40 @@ var app;
                             + response.vehicles[0].user.last_name;
                     });
                 };
+                EditParkingPageController.prototype.deleteVehicle = function (vehicle) {
+                    var self = this;
+                    this.EditParkingPageService.deleteVehicle(vehicle.id)
+                        .then(function (response) {
+                        self.deleteElement(self.vehicleList, vehicle);
+                    });
+                };
+                EditParkingPageController.prototype.editElement = function (array, item) {
+                    for (var i = 0; i < array.length; i++) {
+                        if (array[i].id === item.id) {
+                            array[i].model = item.model;
+                            array[i].year = item.year;
+                            array[i].vin = item.vin;
+                        }
+                    }
+                };
+                EditParkingPageController.prototype.deleteElement = function (array, item) {
+                    for (var i = 0; i < array.length; i++) {
+                        if (array[i].id === item.id) {
+                            array.splice(i, 1);
+                        }
+                    }
+                };
+                EditParkingPageController.prototype.submitForm = function () {
+                    if (this.$scope.vehicleForm.$valid) {
+                        this.addEditVehicle();
+                    }
+                };
                 return EditParkingPageController;
             }());
             EditParkingPageController.controllerId = 'psApp.pages.editParkingPage.editParkingPageController';
             EditParkingPageController.$inject = [
-                'psApp.pages.editParkingPage.editParkingPageService'
+                'psApp.pages.editParkingPage.editParkingPageService',
+                '$scope'
             ];
             editParkingPage.EditParkingPageController = EditParkingPageController;
             angular.module('psApp.pages.editParkingPage')

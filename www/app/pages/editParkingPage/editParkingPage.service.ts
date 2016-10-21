@@ -14,6 +14,7 @@ module app.pages.editParkingPage {
         getVehicleByUserId: () => any;
         addVehicle: (vehicleModel, vehicleYear, vehicleVin) => any;
         editVehicle: (vehicleId, vehicleModel, VehicleYear, vehicleVin) => any;
+        deleteVehicle: (vehicleId) => any;
     }
 
     /**********************************/
@@ -74,6 +75,20 @@ module app.pages.editParkingPage {
             promise = this.restApi.update(
                 { url: 'users/3/vehicles' },
                 { id: vehicleId, model: vehicleModel, year: vehicleYear, vin: vehicleVin })
+                .$promise.then(function(response) {
+                    return response;
+                })
+                .catch(function() {
+                    return 'Error';
+                });
+            return promise;
+        }
+
+        deleteVehicle(vehicleId): any {
+            var promise;
+            promise = this.restApi.remove(
+                { url: 'users/3/vehicles' },
+                {id: vehicleId})
                 .$promise.then(function(response) {
                     return response;
                 })

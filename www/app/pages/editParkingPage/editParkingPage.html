@@ -32,11 +32,21 @@
                             <td>{{ vehicle.model }}</td>
                             <td>{{ vehicle.year }}</td>
                             <td>{{ vehicle.vin }}</td>
-                            <td><button type="button"
+                            <td>
+                                <button type="button"
                                         class="btn button button--border-secondary
                                                button--secondary-color button--small"
                                         ng-click="vm.editVehicle(vehicle)">
                                                Edit
+                                </button>
+                            </td>
+
+                            <td>
+                                <button type="button"
+                                        class="btn button button--border-secondary
+                                               button--secondary-color button--small"
+                                        ng-click="vm.deleteVehicle(vehicle)">
+                                        Delete
                                 </button>
                             </td>
                         </tr>
@@ -53,37 +63,37 @@
                     editParkingPage__container--padding-right">
 
             <div class="box">
-                <form>
+                <form name="vehicleForm" ng-submit="vm.submitForm()" novalidate>
                     <h1>{{vm.formTitle}}</h1>
                     <div class="form-group">
                         <label for="vehicleModel">Modelo del vehículo </label>
                         <input type="text" class="input input--default input--round"
                                 id="vehicleModel" placeholder="Modelo del vehículo"
-                                ng-model="vm.vehicleData.model">
+                                ng-model="vm.vehicleData.model" required>
                     </div>
 
                     <div class="form-group">
                         <label for="vehicleYear">Año del vehículo</label>
                         <input type="text" class="input input--default input--round"
                                id="vehicleYear" placeholder="Año del vehículo"
-                               ng-model="vm.vehicleData.year">
+                               ng-model="vm.vehicleData.year" required>
                     </div>
 
                     <div class="form-group">
                         <label for="vinVehicle">Vin del vehículo</label>
                         <input type="text" class="input input--default input--round"
                                 id="vinVehicle" placeholder="Vin del vehículo"
-                                ng-model="vm.vehicleData.vin">
+                                ng-model="vm.vehicleData.vin" required>
                     </div>
 
                     <div class="message">
                         {{vm.message}}
                     </div>
 
-                    <button type="button"
+                    <button type="submit"
                             class="btn button button--border-secondary
                                    button--secondary-color button--default"
-                            ng-click="vm.addEditVehicle()">
+                            ng-disabled="vehicleForm.$invalid">
                             {{vm.buttonType}}
                         </button>
                 </form>

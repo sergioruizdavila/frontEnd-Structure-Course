@@ -43,6 +43,17 @@ var app;
                     });
                     return promise;
                 };
+                EditParkingPageService.prototype.deleteVehicle = function (vehicleId) {
+                    var promise;
+                    promise = this.restApi.remove({ url: 'users/3/vehicles' }, { id: vehicleId })
+                        .$promise.then(function (response) {
+                        return response;
+                    })
+                        .catch(function () {
+                        return 'Error';
+                    });
+                    return promise;
+                };
                 return EditParkingPageService;
             }());
             EditParkingPageService.serviceId = 'psApp.pages.editParkingPage.editParkingPageService';

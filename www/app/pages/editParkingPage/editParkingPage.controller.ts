@@ -14,6 +14,7 @@ module app.pages.editParkingPage {
         addEditVehicle: () => void;
         getVehicleByUserId: () => void;
         editVehicle: (vehicle) => void;
+        deleteVehicle: (vehicle) => void;
     }
 
     export interface IVehicleData {
@@ -41,14 +42,16 @@ module app.pages.editParkingPage {
 
         /*-- INJECT DEPENDENCIES--*/
         static $inject = [
-            'psApp.pages.editParkingPage.editParkingPageService'
+            'psApp.pages.editParkingPage.editParkingPageService',
+            '$scope'
         ];
 
 
         /**********************************/
         /*           CONSTRUCTOR          */
         /**********************************/
-        constructor(private EditParkingPageService: app.pages.editParkingPage.IEditParkingPageService) {
+        constructor(private EditParkingPageService: app.pages.editParkingPage.IEditParkingPageService,
+                    private $scope: any) {
             this._init();
         }
 
@@ -100,7 +103,7 @@ module app.pages.editParkingPage {
         addEditVehicle(): void {
             var self = this;
 
-            if(this.vehicleData.id){
+            if(this.vehicleData.id) {
                 /* Edit Vehicle */
                 this.EditParkingPageService.editVehicle(
                         this.vehicleData.id,
@@ -114,7 +117,7 @@ module app.pages.editParkingPage {
                         } else  {
                             self.message = "Edición exitosa";
                             /* TODO: No pushear sino actualizar lista */
-                            self.vehicleList.push(response.vehicle);
+                            self.editElement(self.vehicleList, response.vehicle);
                         }
                     }
                 );
@@ -163,6 +166,52 @@ module app.pages.editParkingPage {
                                  + response.vehicles[0].user.last_name;
                 }
             );
+        }
+
+        deleteVehicle(vehicle): void {
+            let self = this;
+
+            /* Edit Vehicle */
+            this.EditParkingPageService.deleteVehicle
+            (vehicle.id)
+            .then(
+                function(response) {
+                    self.deleteElement(self.vehicleList, vehicle);
+
+                }
+            );
+        }
+
+
+        editElement(array, item): any {
+            for (let i = 0; i < array.length; i++) {
+
+                if(array[i].id === item.id) {
+                    array[i].model = item.model;
+                    array[i].year = item.year;
+                    array[i].vin = item.vin;
+                }
+
+            }
+        }
+
+        deleteElement(array, item): any {
+
+            for (let i = 0; i < array.length; i++) {
+
+                if(array[i].id === item.id) {
+                    array.splice(i, 1);
+                }
+
+            }
+        }
+
+
+        submitForm(): void {
+            // check to make sure the form is completely valid
+            if (this.$scope.vehicleForm.$valid) {
+                this.addEditVehicle();
+            }
         }
 
     }
