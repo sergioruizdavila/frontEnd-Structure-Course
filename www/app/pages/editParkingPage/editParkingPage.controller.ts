@@ -15,6 +15,12 @@ module app.pages.editParkingPage {
         getVehicleByUserId: () => void;
     }
 
+    export interface IVehicleData {
+        model: string;
+        year: string;
+        vin: string;
+    }
+
     /**********************************/
     /*         CLASS DEFINITION       */
     /**********************************/
@@ -26,12 +32,13 @@ module app.pages.editParkingPage {
         static controllerId = 'psApp.pages.editParkingPage.editParkingPageController';
         vehicleList: Array<any>;
         owner: string;
+        vehicleData: IVehicleData;
+        message: string;
+
         /*-- INJECT DEPENDENCIES--*/
         static $inject = [
             'psApp.pages.editParkingPage.editParkingPageService'
         ];
-
-
         /**********************************/
         /*           CONSTRUCTOR          */
         /**********************************/
@@ -43,7 +50,16 @@ module app.pages.editParkingPage {
         private _init() {
             //Init Variables
             this.vehicleList = [];
+
             this.owner = "";
+
+            this.vehicleData = {
+                model: '',
+                year: '',
+                vin: ''
+            };
+
+            this.message = '';
 
             this._activate();
         }
@@ -54,40 +70,45 @@ module app.pages.editParkingPage {
             console.log('editParkingPage controller actived');
             this.getVehicleByUserId();
         }
-
-
         /**********************************/
         /*             METHODS            */
         /**********************************/
         addVehicle(): void {
-            console.log('Entro');
+
+            var self = this;
+
+            this.EditParkingPageService.addVehicle(
+                this.vehicleData.model,
+                this.vehicleData.year,
+                this.vehicleData.vin)
+                .then(
+                function(response) {
+                    if (response.vehicle == false) {
+                        self.message = "No pudo crearse";
+                    } else {
+                        self.message = "Creación exitosa";
+                        self.vehicleList.push(response.vehicle);
+                    }
+                }
+                );
+
         }
 
         getVehicleByUserId(): void {
             let self = this;
-            this.EditParkingPageService.getVehicleByUserId(1).then(
-                function(response){
-                    console.log('Mis datos obtenidos son:', response);
-                    //this.vehicleList = response.vehicles[1];
-                    for (let i = 0; i < response.vehicles.length; i++) {
-                      self.vehicleList.push(response.vehicles[i]);
-                      console.log(self.vehicleList);
-                    }
-                    self.owner = response.vehicles[0].user.first_name + ' ' + response.vehicles[0].user.last_name;
-                    console.log("xd");
-                    console.log(self.vehicleList);
-//                    for (let i = 0; i < array.length; i++) {
-                      //self.vehicleList.push(new app.core.models.vehicle.(response.vehicles[i]));
+            this.EditParkingPageService.getVehicleByUserId().then(
+                function(response) {
 
-//                    }
+                    for (let i = 0; i < response.vehicles.length; i++) {
+                        self.vehicleList.push(response.vehicles[i]);
+                    }
+                    self.owner = response.vehicles[0].user.first_name + ' '
+                        + response.vehicles[0].user.last_name;
                 }
             );
         }
 
     }
-
-
     angular.module('psApp.pages.editParkingPage')
-            .controller(EditParkingPageController.controllerId, EditParkingPageController);
-
+        .controller(EditParkingPageController.controllerId, EditParkingPageController);
 }
