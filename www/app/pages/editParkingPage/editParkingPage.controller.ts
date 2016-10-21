@@ -73,7 +73,7 @@ module app.pages.editParkingPage {
 
             this.message = '';
 
-            this.buttonType = 'Agregar';
+            this.buttonType = 'Add';
 
             this._activate();
         }
@@ -113,10 +113,9 @@ module app.pages.editParkingPage {
                 .then(
                     function(response) {
                         if(response.vehicle == false) {
-                            self.message = "No pudo editarse";
+                            self.message = "It can not edit";
                         } else  {
-                            self.message = "Edición exitosa";
-                            /* TODO: No pushear sino actualizar lista */
+                            self.message = "successfull";
                             self.editElement(self.vehicleList, response.vehicle);
                         }
                     }
@@ -131,9 +130,9 @@ module app.pages.editParkingPage {
                 .then(
                     function(response) {
                         if(response.vehicle == false) {
-                            self.message = "No pudo crearse";
+                            self.message = "It can not create";
                         } else  {
-                            self.message = "Creación exitosa";
+                            self.message = "successfull created";
                             self.vehicleList.push(response.vehicle);
                         }
                     }

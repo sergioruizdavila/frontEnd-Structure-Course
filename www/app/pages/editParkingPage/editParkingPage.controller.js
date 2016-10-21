@@ -22,7 +22,7 @@ var app;
                         vin: ''
                     };
                     this.message = '';
-                    this.buttonType = 'Agregar';
+                    this.buttonType = 'Add';
                     this._activate();
                 };
                 EditParkingPageController.prototype._activate = function () {
@@ -44,10 +44,10 @@ var app;
                         this.EditParkingPageService.editVehicle(this.vehicleData.id, this.vehicleData.model, this.vehicleData.year, this.vehicleData.vin)
                             .then(function (response) {
                             if (response.vehicle == false) {
-                                self.message = "No pudo editarse";
+                                self.message = "It can not edit";
                             }
                             else {
-                                self.message = "Edición exitosa";
+                                self.message = "successfull";
                                 self.editElement(self.vehicleList, response.vehicle);
                             }
                         });
@@ -56,10 +56,10 @@ var app;
                         this.EditParkingPageService.addVehicle(this.vehicleData.model, this.vehicleData.year, this.vehicleData.vin)
                             .then(function (response) {
                             if (response.vehicle == false) {
-                                self.message = "No pudo crearse";
+                                self.message = "It can not create";
                             }
                             else {
-                                self.message = "Creación exitosa";
+                                self.message = "successfull created";
                                 self.vehicleList.push(response.vehicle);
                             }
                         });
