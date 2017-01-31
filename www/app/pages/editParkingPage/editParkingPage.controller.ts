@@ -104,7 +104,7 @@ module app.pages.editParkingPage {
                             self.message = "No pudo crearse";
                         } else  {
                             self.message = "Creación exitosa";
-                            //No push sino update list//    
+                            //No push sino update list//
                             //self.vehicleList.push(response.vehicle);
                         }
 
